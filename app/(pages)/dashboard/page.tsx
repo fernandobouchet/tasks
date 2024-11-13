@@ -1,3 +1,9 @@
+import { SignOutButton } from "@/components/login/signOutButton";
+
 export default function Dashboard() {
-  return <div>Dashboard</div>;
+  return (
+    <div>
+      <SignOutButton />
+    </div>
+  );
 }
