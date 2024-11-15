@@ -18,6 +18,8 @@ model User {
  
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+
+  Board Board[]
 }
  
 model Account {
@@ -59,3 +61,44 @@ model VerificationToken {
   @@id([identifier, token])
 }
  
+model Task {
+  taskId      String @id @default(cuid())
+  title       String
+  description String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  status      TaskStatus
+  priority    TaskPriority
+  dueDate     DateTime?
+  completedAt DateTime?
+
+  boardId     String
+  board       Board @relation(fields: [boardId], references: [boardId], onDelete: Cascade)
+}
+
+model Board {
+  boardId      String @id @default(cuid())
+  title        String
+  description  String?
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  userId      String
+  tasks       Task[]
+  
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum TaskStatus {
+  TODO
+  IN_PROGRESS
+  COMPLETED
+  CANCELED
+}
+
+enum TaskPriority {
+  LOW
+  MEDIUM
+  HIGH
+}
+
