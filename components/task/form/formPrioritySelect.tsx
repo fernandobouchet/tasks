@@ -15,7 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TaskPriority } from "@prisma/client";
 import { UseFormReturn } from "react-hook-form";
 
 interface Props {
@@ -23,15 +22,14 @@ interface Props {
     {
       title: string;
       description: string;
-      status: "TODO" | "IN_PROGRESS" | "COMPLETED" | "CANCELED";
-      priority: "LOW" | "MEDIUM" | "HIGH";
+      status: TaskStatus;
+      priority: TaskPriority;
       dueDate: Date;
     },
     unknown,
     undefined
   >;
 }
-
 const availeableStatus = Object.entries(TaskPriority).map(([key]) => ({
   value: key,
   label: `${key}`,

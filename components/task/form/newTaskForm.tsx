@@ -16,7 +16,6 @@ import {
 import { Input } from "@/components/ui/input";
 import { createTask } from "@/lib/actions/task/createTask";
 import { FormStatusSelect } from "./formStatusSelect";
-import { TaskPriority, TaskStatus } from "@prisma/client";
 import { FormPrioritySelect } from "./formPrioritySelect";
 import { FormDueDate } from "./formDueDate";
 

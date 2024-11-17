@@ -27,8 +27,8 @@ interface Props {
     {
       title: string;
       description: string;
-      status: "TODO" | "IN_PROGRESS" | "COMPLETED" | "CANCELED";
-      priority: "LOW" | "MEDIUM" | "HIGH";
+      status: TaskStatus;
+      priority: TaskPriority;
       dueDate: Date;
     },
     unknown,

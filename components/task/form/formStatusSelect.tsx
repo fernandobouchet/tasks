@@ -15,7 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { TaskStatus } from "@prisma/client";
 import { UseFormReturn } from "react-hook-form";
 
 interface Props {
@@ -23,8 +22,8 @@ interface Props {
     {
       title: string;
       description: string;
-      status: "TODO" | "IN_PROGRESS" | "COMPLETED" | "CANCELED";
-      priority: "LOW" | "MEDIUM" | "HIGH";
+      status: TaskStatus;
+      priority: TaskPriority;
       dueDate: Date;
     },
     unknown,

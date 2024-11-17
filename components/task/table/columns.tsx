@@ -12,27 +12,31 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { Task } from "@/types";
 import { formatDate } from "@/lib/functions";
 
-export const columns: ColumnDef<Task>[] = [
+export const columns: ColumnDef<TaskColumn>[] = [
   {
+    accessorFn: (row) => row.title,
     accessorKey: "title",
     header: "Title",
   },
   {
+    accessorFn: (row) => row.description,
     accessorKey: "description",
     header: "Description",
   },
   {
+    accessorFn: (row) => row.priority,
     accessorKey: "priority",
     header: "Priority",
   },
   {
+    accessorFn: (row) => row.status,
     accessorKey: "status",
     header: "Status",
   },
   {
+    accessorFn: (row) => row.createdAt,
     accessorKey: "createdAt",
     header: () => <div className="text-right">Created At</div>,
     cell: ({ row }) => {
@@ -41,6 +45,7 @@ export const columns: ColumnDef<Task>[] = [
     },
   },
   {
+    accessorFn: (row) => row.dueDate,
     accessorKey: "dueDate",
     header: () => <div className="text-right">Due Date</div>,
     cell: ({ row }) => {

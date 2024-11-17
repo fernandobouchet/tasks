@@ -20,22 +20,35 @@ type Task = {
   description: string;
   createdAt: Date;
   updatedAt: Date;
-  status: keyof typeof TaskStatus;
-  priority: keyof typeof TaskPriority;
-  dueDate: Date;
-  completedAt: Date;
+  status: TaskStatus;
+  priority: TaskPriority;
+  dueDate: Date | null;
+  completedAt: Date | null;
 
   boardId: string;
 };
 
-export enum TaskStatus {
+type TaskColumn = {
+  taskId: string;
+  title: string;
+  description: string;
+  createdAt: Date;
+  updatedAt: Date;
+  status: keyof typeof TaskStatus;
+  priority: keyof typeof TaskPriority;
+  dueDate?: Date | null;
+  completedAt?: Date | null;
+  boardId: string;
+};
+
+enum TaskStatus {
   TODO = "TODO",
   IN_PROGRESS = "IN_PROGRESS",
   COMPLETED = "COMPLETED",
   CANCELED = "CANCELED",
 }
 
-export enum TaskPriority {
+enum TaskPriority {
   LOW = "LOW",
   MEDIUM = "MEDIUM",
   HIGH = "HIGH",
