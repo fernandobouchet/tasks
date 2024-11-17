@@ -10,6 +10,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function NavMain({
   items,
@@ -18,9 +19,10 @@ export function NavMain({
     title: string;
     url: string;
     icon: LucideIcon;
-    isActive?: boolean;
   }[];
 }) {
+  const path = usePathname();
+
   return (
     <SidebarGroup>
       <SidebarGroupLabel>General</SidebarGroupLabel>
@@ -35,7 +37,7 @@ export function NavMain({
         </SidebarMenuItem>
         {items.map((item) => (
           <SidebarMenuItem key={item.title}>
-            <SidebarMenuButton asChild isActive={item.isActive}>
+            <SidebarMenuButton asChild isActive={path.endsWith(`${item.url}`)}>
               <Link href={item.url}>
                 <item.icon />
                 {item.title}

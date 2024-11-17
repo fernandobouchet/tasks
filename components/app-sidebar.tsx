@@ -1,13 +1,7 @@
 "use client";
 
 import * as React from "react";
-import {
-  BookCheck,
-  BookOpen,
-  Bot,
-  LayoutDashboard,
-  Settings2,
-} from "lucide-react";
+import { BookCheck, Home, LayoutDashboard } from "lucide-react";
 
 import { NavMain } from "@/components/nav-main";
 import { NavUser } from "@/components/nav-user";
@@ -21,29 +15,17 @@ import {
 } from "@/components/ui/sidebar";
 import { useSession } from "next-auth/react";
 
-// This is sample data.
 const data = {
   navMain: [
     {
-      title: "Boards",
+      title: "Home",
       url: "/dashboard",
+      icon: Home,
+    },
+    {
+      title: "Boards",
+      url: "/dashboard/boards",
       icon: LayoutDashboard,
-      isActive: true,
-    },
-    {
-      title: "Models",
-      url: "#",
-      icon: Bot,
-    },
-    {
-      title: "Documentation",
-      url: "#",
-      icon: BookOpen,
-    },
-    {
-      title: "Settings",
-      url: "#",
-      icon: Settings2,
     },
   ],
 };
