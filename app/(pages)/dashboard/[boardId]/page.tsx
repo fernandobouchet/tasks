@@ -1,4 +1,6 @@
 import { NewTaskForm } from "@/components/task/form/newTaskForm";
+import { columns } from "@/components/task/table/columns";
+import { DataTable } from "@/components/task/table/dataTable";
 import { getAllTaskFromBoardId } from "@/lib/actions/task/getAllTaskFromBoardId";
 
 interface Props {
@@ -17,9 +19,7 @@ export default async function Board({ params }: Props) {
       <section>
         <NewTaskForm boardId={boardId} />
         <div>
-          {data.map((item) => (
-            <p key={item.taskId}>{item.title}</p>
-          ))}
+          <DataTable columns={columns} data={data} />
         </div>
       </section>
     </div>
