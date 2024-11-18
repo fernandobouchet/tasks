@@ -29,7 +29,7 @@ const formSchema = z.object({
     message: "Task title must be at least 5 characters.",
   }),
   description: z.string().min(2, {
-    message: "Board description must be at least 10 characters.",
+    message: "Task description must be at least 10 characters.",
   }),
   status: z.nativeEnum(TaskStatus, {
     message: "Status is required.",
@@ -37,7 +37,7 @@ const formSchema = z.object({
   priority: z.nativeEnum(TaskPriority, {
     message: "Priority is required.",
   }),
-  dueDate: z.date({ message: "Date is required." }),
+  dueDate: z.date({ message: "Task due date is required." }),
 });
 
 function NewTaskForm({ boardId }: Props) {
@@ -67,9 +67,9 @@ function NewTaskForm({ boardId }: Props) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col items-center space-y-8"
+        className="flex flex-col w-full items-center space-y-2"
       >
-        <div className="flex">
+        <div className="flex flex-col w-full">
           <FormField
             control={form.control}
             name="title"
@@ -101,9 +101,11 @@ function NewTaskForm({ boardId }: Props) {
             )}
           />
         </div>
-        <div className="flex">
+        <div className="flex w-full justify-between">
           <FormStatusSelect form={form} />
           <FormPrioritySelect form={form} />
+        </div>
+        <div className="flex mr-auto">
           <FormDueDate form={form} />
         </div>
         <Button className="flex ml-auto" type="submit">

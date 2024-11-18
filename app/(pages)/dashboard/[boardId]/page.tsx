@@ -1,4 +1,4 @@
-import { NewTaskForm } from "@/components/task/form/newTaskForm";
+import { TaskFormDialog } from "@/components/task/form/taskFormDialog";
 import { columns } from "@/components/task/table/columns";
 import { DataTable } from "@/components/task/table/dataTable";
 import { getAllTaskFromBoardId } from "@/lib/actions/task/getAllTaskFromBoardId";
@@ -17,7 +17,7 @@ export default async function Board({ params }: Props) {
   return (
     <div>
       <section>
-        <NewTaskForm boardId={boardId} />
+        <TaskFormDialog boardId={boardId} />
         <div>
           <DataTable columns={columns} data={data} />
         </div>
