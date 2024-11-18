@@ -20,21 +20,25 @@ export const columns: ColumnDef<TaskColumn>[] = [
     accessorFn: (row) => row.title,
     accessorKey: "title",
     header: "Title",
+    meta: { hideOnMobile: false },
   },
   {
     accessorFn: (row) => row.description,
     accessorKey: "description",
     header: "Description",
+    meta: { hideOnMobile: true },
   },
   {
     accessorFn: (row) => row.priority,
     accessorKey: "priority",
     header: "Priority",
+    meta: { hideOnMobile: false },
   },
   {
     accessorFn: (row) => row.status,
     accessorKey: "status",
     header: "Status",
+    meta: { hideOnMobile: false },
   },
   {
     accessorFn: (row) => row.createdAt,
@@ -44,6 +48,7 @@ export const columns: ColumnDef<TaskColumn>[] = [
       const formattedDueDate = formatDate(row.getValue("createdAt"));
       return <div className="text-right font-medium">{formattedDueDate}</div>;
     },
+    meta: { hideOnMobile: true },
   },
   {
     accessorFn: (row) => row.dueDate,
@@ -53,6 +58,7 @@ export const columns: ColumnDef<TaskColumn>[] = [
       const formattedDueDate = formatDate(row.getValue("dueDate"));
       return <div className="text-right font-medium">{formattedDueDate}</div>;
     },
+    meta: { hideOnMobile: true },
   },
   {
     id: "actions",
