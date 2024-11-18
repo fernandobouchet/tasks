@@ -10,6 +10,7 @@ import {
 } from "../ui/card";
 import { Calendar, MoveUpRight } from "lucide-react";
 import { formatDate } from "@/lib/functions";
+import { Board } from "@/types";
 
 interface Props {
   board: Board;

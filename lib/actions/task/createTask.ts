@@ -3,6 +3,7 @@
 import { prisma } from "@/prisma/prisma";
 import { auth } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
+import { TaskPriority, TaskStatus } from "@/types";
 
 interface Props {
   task: {

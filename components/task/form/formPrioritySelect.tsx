@@ -15,6 +15,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { TaskStatus, TaskPriority } from "@/types";
 import { UseFormReturn } from "react-hook-form";
 
 interface Props {

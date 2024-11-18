@@ -13,6 +13,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { formatDate } from "@/lib/functions";
+import { TaskColumn } from "@/types";
 
 export const columns: ColumnDef<TaskColumn>[] = [
   {

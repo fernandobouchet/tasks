@@ -17,6 +17,7 @@ import { Input } from "@/components/ui/input";
 import { createTask } from "@/lib/actions/task/createTask";
 import { FormStatusSelect } from "./formStatusSelect";
 import { FormPrioritySelect } from "./formPrioritySelect";
+import { TaskStatus, TaskPriority } from "@/types";
 import { FormDueDate } from "./formDueDate";
 
 interface Props {

@@ -21,6 +21,7 @@ import {
 import { SignOutButton } from "./login/signOutButton";
 import { Skeleton } from "./ui/skeleton";
 import { ThemeToggle } from "./themeToggle";
+import { User } from "@/types";
 
 interface Props {
   user?: User;
