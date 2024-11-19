@@ -23,6 +23,9 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useIsMobile } from "@/hooks/use-mobile";
+import { X } from "lucide-react";
+import { DataTableFacetedFilter } from "./dataTableFacetedFilter";
+import { statuses, priorities } from "./constants";
 
 interface DataTableProps<TData, TValue> {
   columns: (ColumnDef<TData, TValue> & {
@@ -60,17 +63,43 @@ export function DataTable<TData, TValue>({
     },
   });
 
+  const isFiltered = table.getState().columnFilters.length > 0;
+
   return (
     <div>
-      <div className="flex items-center py-4">
+      <div className="flex flex-wrap items-center py-4 gap-2">
         <Input
           placeholder="Filter tasks by title.."
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
           }
-          className="max-w-sm"
+          className="h-8 w-[150px] lg:w-[250px]"
         />
+        {table.getColumn("status") && (
+          <DataTableFacetedFilter
+            column={table.getColumn("status")}
+            title="Status"
+            options={statuses}
+          />
+        )}
+        {table.getColumn("priority") && (
+          <DataTableFacetedFilter
+            column={table.getColumn("priority")}
+            title="Priority"
+            options={priorities}
+          />
+        )}
+        {isFiltered && (
+          <Button
+            variant="ghost"
+            onClick={() => table.resetColumnFilters()}
+            className="h-8 px-2 lg:px-3"
+          >
+            Reset
+            <X />
+          </Button>
+        )}
       </div>
       <div className="rounded-md border">
         <Table>
