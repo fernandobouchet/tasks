@@ -31,7 +31,7 @@ const BoardCard = ({ board }: Props) => {
       </CardContent>
       <CardFooter className="flex justify-center w-full">
         <Button asChild className="flex items-center gap-2 w-full">
-          <Link href={`/dashboard/${board.boardId}`}>
+          <Link href={`/dashboard/boards/${board.boardId}`}>
             Go to dashboard
             <MoveUpRight />
           </Link>
