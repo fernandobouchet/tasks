@@ -10,6 +10,7 @@ import {
   BreadcrumbSeparator,
 } from "./ui/breadcrumb";
 import { Fragment, ReactElement } from "react";
+import Link from "next/link";
 
 const Breadcrumbs = () => {
   const pathname = usePathname();
@@ -37,7 +38,9 @@ const Breadcrumbs = () => {
         <Fragment key={href}>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbLink href={href}>{route}</BreadcrumbLink>
+            <BreadcrumbLink asChild>
+              <Link href={href}>{route}</Link>
+            </BreadcrumbLink>
           </BreadcrumbItem>
         </Fragment>
       );
@@ -48,7 +51,9 @@ const Breadcrumbs = () => {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/dashboard">Dashboard</BreadcrumbLink>
+          <BreadcrumbLink asChild>
+            <Link href="/dashboard">dashboard</Link>
+          </BreadcrumbLink>
         </BreadcrumbItem>
         {breadcrumbItems}
         {segments.length >= 1 && <BreadcrumbSeparator />}
