@@ -14,6 +14,7 @@ import {
   SidebarRail,
 } from "@/components/ui/sidebar";
 import { useSession } from "next-auth/react";
+import { BoardMenu } from "./boardMenu";
 
 const data = {
   navMain: [
@@ -49,6 +50,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
       </SidebarHeader>
       <SidebarContent>
         <NavMain items={data.navMain} />
+        <BoardMenu />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={session?.user} />
