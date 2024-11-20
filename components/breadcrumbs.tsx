@@ -18,7 +18,6 @@ const Breadcrumbs = () => {
     .split("/")
     .filter((item) => item !== "dashboard" && item !== "");
 
-  console.log(segments);
   const breadcrumbItems: ReactElement[] = [];
   let breadcrumbPage: ReactElement = <></>;
 
