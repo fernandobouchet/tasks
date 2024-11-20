@@ -10,23 +10,23 @@ import {
 
 export const statuses = [
   {
-    value: "todo",
-    label: "TODO",
+    value: "TODO",
+    label: "Todo",
     icon: HelpCircle,
   },
   {
-    value: "in progress",
-    label: "IN_PROGRESS",
+    value: "IN_PROGRESS",
+    label: "In progress",
     icon: Timer,
   },
   {
-    value: "completed",
-    label: "COMPLETED",
+    value: "COMPLETED",
+    label: "Completed",
     icon: CheckCircle,
   },
   {
-    value: "canceled",
-    label: "CANCELED",
+    value: "CANCELED",
+    label: "Canceled",
     icon: CircleOff,
   },
 ];
