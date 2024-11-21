@@ -11,6 +11,7 @@ import {
 import { Calendar, MoveUpRight } from "lucide-react";
 import { formatDate } from "@/lib/functions";
 import { Board } from "@/types";
+import { BoardCardOptions } from "./boardCardOptions";
 
 interface Props {
   board: Board;
@@ -20,6 +21,9 @@ const BoardCard = ({ board }: Props) => {
   return (
     <Card>
       <CardHeader>
+        <div className="ml-auto">
+          <BoardCardOptions />
+        </div>
         <CardTitle>{board.title}</CardTitle>
         <CardDescription>{board.description}</CardDescription>
       </CardHeader>

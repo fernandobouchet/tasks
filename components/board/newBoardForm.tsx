@@ -26,7 +26,11 @@ const formSchema = z.object({
   }),
 });
 
-function NewBoardForm() {
+interface Props {
+  onOpenChange: () => void;
+}
+
+function NewBoardForm({ onOpenChange }: Props) {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -38,9 +42,14 @@ function NewBoardForm() {
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const data = await createBoard(values);
-    if (data?.boardId) {
-      router.push(`/dashboard/${data?.boardId}`);
+    try {
+      const data = await createBoard(values);
+      if (data?.boardId) {
+        onOpenChange();
+        router.push(`/dashboard/boards/${data.boardId}`);
+      }
+    } catch (error) {
+      console.log(error);
     }
   }
 
