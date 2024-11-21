@@ -22,7 +22,7 @@ const BoardCard = ({ board }: Props) => {
     <Card>
       <CardHeader>
         <div className="ml-auto">
-          <BoardCardOptions />
+          <BoardCardOptions board={board} />
         </div>
         <CardTitle>{board.title}</CardTitle>
         <CardDescription>{board.description}</CardDescription>

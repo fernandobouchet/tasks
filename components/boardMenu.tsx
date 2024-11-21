@@ -4,7 +4,7 @@ import {
   Trash2,
   SquareCheckBig,
   Edit,
-  ChartLine,
+  SquareKanban,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -20,28 +20,38 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { usePathname } from "next/navigation";
+import { useParams, usePathname } from "next/navigation";
 import { isBoardRoute } from "@/lib/functions";
-
-const projects = [
-  {
-    name: "Tasks",
-    url: "#",
-    icon: SquareCheckBig,
-  },
-  {
-    name: "Statistics",
-    url: "#",
-    icon: ChartLine,
-  },
-];
+import { DeleteBoardAlert } from "./board/deleteBoardAlert";
+import { useState } from "react";
 
 const BoardMenu = () => {
   const path = usePathname();
+  const params = useParams();
+  const [open, setOpen] = useState(false);
+
+  const { boardId } = params;
 
   if (!isBoardRoute(path)) {
     return null;
   }
+
+  const handleOpen = () => {
+    setOpen(!open);
+  };
+
+  const projects = [
+    {
+      name: "Tasks",
+      url: `/dashboard/boards/${boardId}`,
+      icon: SquareCheckBig,
+    },
+    {
+      name: "Kanban",
+      url: `/dashboard/boards/${boardId}/kanban`,
+      icon: SquareKanban,
+    },
+  ];
 
   return (
     <SidebarGroup>
@@ -75,12 +85,17 @@ const BoardMenu = () => {
                 <span>Edit Board</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
-              <DropdownMenuItem className="cursor-pointer">
+              <DropdownMenuItem className="cursor-pointer" onClick={handleOpen}>
                 <Trash2 className="text-muted-foreground" />
                 <span>Delete Board</span>
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
+          <DeleteBoardAlert
+            open={open}
+            handleOpen={handleOpen}
+            boardId={boardId as string}
+          />
         </SidebarMenuItem>
       </SidebarMenu>
     </SidebarGroup>

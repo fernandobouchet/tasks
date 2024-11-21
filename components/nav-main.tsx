@@ -1,6 +1,6 @@
 "use client";
 
-import { Plus, type LucideIcon } from "lucide-react";
+import { type LucideIcon } from "lucide-react";
 
 import {
   SidebarGroup,
@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sidebar";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { BoardFormDialog } from "./board/boardFormDialog";
 
 export function NavMain({
   items,
@@ -29,10 +30,7 @@ export function NavMain({
       <SidebarMenu>
         <SidebarMenuItem>
           <SidebarMenuButton asChild>
-            <Link href={"/dashboard/new"}>
-              <Plus />
-              New board
-            </Link>
+            <BoardFormDialog />
           </SidebarMenuButton>
         </SidebarMenuItem>
         {items.map((item) => (
