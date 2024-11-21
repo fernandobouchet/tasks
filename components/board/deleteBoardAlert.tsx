@@ -10,6 +10,7 @@ import {
 } from "../ui/alert-dialog";
 import { Button } from "../ui/button";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 interface Props {
   open: boolean;
@@ -25,10 +26,14 @@ const DeleteBoardAlert = ({ open, handleOpen, boardId }: Props) => {
       handleOpen();
       const isDeleted = await deleteBoard(boardId);
       if (isDeleted) {
+        toast.success("Board eliminado exitosamente!");
         router.push("/dashboard/boards");
       }
     } catch (error) {
       console.log(error);
+      toast.error(
+        "Hubo un error al intentar borrar el board, por favor intenta nuevamente."
+      );
     }
   };
   return (

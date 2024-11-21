@@ -24,6 +24,7 @@ import { useParams, usePathname } from "next/navigation";
 import { isBoardRoute } from "@/lib/functions";
 import { DeleteBoardAlert } from "./board/deleteBoardAlert";
 import { useState } from "react";
+import Link from "next/link";
 
 const BoardMenu = () => {
   const path = usePathname();
@@ -60,10 +61,10 @@ const BoardMenu = () => {
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>
             <SidebarMenuButton asChild>
-              <a href={item.url}>
+              <Link href={item.url}>
                 <item.icon />
                 <span>{item.name}</span>
-              </a>
+              </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
         ))}
