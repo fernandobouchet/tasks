@@ -24,6 +24,14 @@ const formSchema = z.object({
   description: z.string().min(2, {
     message: "Board description must be at least 5 characters.",
   }),
+  shortName: z
+    .string()
+    .min(5, {
+      message: "Board short name must be at least 5 characters.",
+    })
+    .max(20, {
+      message: "Board short name must be 20 characters máx.",
+    }),
 });
 
 interface Props {
@@ -38,6 +46,7 @@ function NewBoardForm({ onOpenChange }: Props) {
     defaultValues: {
       title: "",
       description: "",
+      shortName: "",
     },
   });
 
@@ -80,6 +89,20 @@ function NewBoardForm({ onOpenChange }: Props) {
                 <Input placeholder="Description" {...field} />
               </FormControl>
               <FormDescription>This is your board description.</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+        <FormField
+          control={form.control}
+          name="shortName"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Short name</FormLabel>
+              <FormControl>
+                <Input placeholder="Short name" {...field} />
+              </FormControl>
+              <FormDescription>This is your board short name.</FormDescription>
               <FormMessage />
             </FormItem>
           )}

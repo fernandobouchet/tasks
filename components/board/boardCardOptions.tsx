@@ -1,6 +1,6 @@
 "use client";
 
-import { Folder, Forward, MoreHorizontal, Trash2 } from "lucide-react";
+import { Edit, MoreHorizontal, Trash2 } from "lucide-react";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -37,11 +37,7 @@ const BoardCardOptions = ({ board }: Props) => {
         align={isMobile ? "end" : "start"}
       >
         <DropdownMenuItem className="cursor-pointer">
-          <Folder className="text-muted-foreground" />
-          <span>View Board</span>
-        </DropdownMenuItem>
-        <DropdownMenuItem className="cursor-pointer">
-          <Forward className="text-muted-foreground" />
+          <Edit className="text-muted-foreground" />
           <span>Update Board</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />

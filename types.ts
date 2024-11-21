@@ -8,6 +8,7 @@ export type Board = {
   boardId: string;
   title: string;
   description: string | null;
+  shortName: string;
   createdAt: Date;
   updatedAt: Date;
   userId: string;

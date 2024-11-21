@@ -19,7 +19,7 @@ interface Props {
 
 const BoardCard = ({ board }: Props) => {
   return (
-    <Card>
+    <Card className="flex flex-col lg:w-72 h-80">
       <CardHeader>
         <div className="ml-auto">
           <BoardCardOptions board={board} />
@@ -28,12 +28,13 @@ const BoardCard = ({ board }: Props) => {
         <CardDescription>{board.description}</CardDescription>
       </CardHeader>
       <CardContent>
+        <p>{board.shortName}</p>
         <span className="flex items-center gap-1 text-xs lg:text-sm text-muted-foreground">
           <Calendar className="w-4" />
           {formatDate(board.createdAt)}
         </span>
       </CardContent>
-      <CardFooter className="flex justify-center w-full">
+      <CardFooter className="flex justify-center mt-auto w-full">
         <Button asChild className="flex items-center gap-2 w-full">
           <Link href={`/dashboard/boards/${board.boardId}`}>
             Go to dashboard

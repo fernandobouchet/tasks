@@ -7,9 +7,10 @@ import { revalidatePath } from "next/cache";
 interface Props {
   title: string;
   description: string;
+  shortName: string;
 }
 
-const createBoard = async ({ title, description }: Props) => {
+const createBoard = async ({ title, description, shortName }: Props) => {
   const session = await auth();
 
   if (!session?.user) return null;
@@ -21,6 +22,7 @@ const createBoard = async ({ title, description }: Props) => {
       data: {
         title,
         description,
+        shortName,
         userId,
       },
     });
