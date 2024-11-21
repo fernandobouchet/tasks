@@ -79,6 +79,7 @@ model Task {
 model Board {
   boardId      String @id @default(cuid())
   title        String
+  shortName    String @unique
   description  String?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
