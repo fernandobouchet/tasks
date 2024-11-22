@@ -70,7 +70,6 @@ model Task {
   status      TaskStatus
   priority    TaskPriority
   dueDate     DateTime?
-  completedAt DateTime?
 
   boardId     String
   board       Board @relation(fields: [boardId], references: [boardId], onDelete: Cascade)
@@ -79,8 +78,7 @@ model Task {
 model Board {
   boardId      String @id @default(cuid())
   title        String
-  shortName    String @unique
-  description  String?
+  shortName    String   @unique
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
