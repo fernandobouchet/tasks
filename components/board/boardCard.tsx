@@ -3,7 +3,6 @@ import { Button } from "../ui/button";
 import {
   Card,
   CardContent,
-  CardDescription,
   CardFooter,
   CardHeader,
   CardTitle,
@@ -25,7 +24,6 @@ const BoardCard = ({ board }: Props) => {
           <BoardCardOptions board={board} />
         </div>
         <CardTitle>{board.title}</CardTitle>
-        <CardDescription>{board.description}</CardDescription>
       </CardHeader>
       <CardContent>
         <p>{board.shortName}</p>
@@ -37,7 +35,7 @@ const BoardCard = ({ board }: Props) => {
       <CardFooter className="flex justify-center mt-auto w-full">
         <Button asChild className="flex items-center gap-2 w-full">
           <Link href={`/dashboard/boards/${board.boardId}`}>
-            Go to dashboard
+            Go to board
             <MoveUpRight />
           </Link>
         </Button>

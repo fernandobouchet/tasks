@@ -21,9 +21,6 @@ const formSchema = z.object({
   title: z.string().min(2, {
     message: "Board title must be at least 2 characters.",
   }),
-  description: z.string().min(2, {
-    message: "Board description must be at least 5 characters.",
-  }),
   shortName: z
     .string()
     .min(5, {
@@ -45,7 +42,6 @@ function NewBoardForm({ onOpenChange }: Props) {
     resolver: zodResolver(formSchema),
     defaultValues: {
       title: "",
-      description: "",
       shortName: "",
     },
   });
@@ -81,20 +77,6 @@ function NewBoardForm({ onOpenChange }: Props) {
         />
         <FormField
           control={form.control}
-          name="description"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Description</FormLabel>
-              <FormControl>
-                <Input placeholder="Description" {...field} />
-              </FormControl>
-              <FormDescription>This is your board description.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-        <FormField
-          control={form.control}
           name="shortName"
           render={({ field }) => (
             <FormItem>
@@ -102,7 +84,9 @@ function NewBoardForm({ onOpenChange }: Props) {
               <FormControl>
                 <Input placeholder="Short name" {...field} />
               </FormControl>
-              <FormDescription>This is your board short name.</FormDescription>
+              <FormDescription>
+                This is a unique, short identifier for the board.
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
