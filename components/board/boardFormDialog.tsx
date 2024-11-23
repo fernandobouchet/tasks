@@ -1,3 +1,4 @@
+"use client";
 import {
   Dialog,
   DialogContent,
@@ -7,7 +8,7 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog";
 import { Plus } from "lucide-react";
-import { NewBoardForm } from "./newBoardForm";
+import { BoardForm } from "./boardForm";
 import { SidebarMenuButton } from "../ui/sidebar";
 import { useState } from "react";
 
@@ -31,7 +32,7 @@ const BoardFormDialog = () => {
           <DialogTitle>Create new board</DialogTitle>
           <DialogDescription />
         </DialogHeader>
-        <NewBoardForm onOpenChange={handleOpenChange} />
+        <BoardForm onOpenChange={handleOpenChange} />
       </DialogContent>
     </Dialog>
   );

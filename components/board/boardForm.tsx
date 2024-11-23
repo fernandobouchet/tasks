@@ -16,6 +16,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { createBoard } from "@/lib/actions/board/createBoard";
 import { useRouter } from "next/navigation";
+import { Board, BoardWithPartialTasks } from "@/types";
+import { updateBoard } from "@/lib/actions/board/updateBoard";
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -33,28 +35,37 @@ const formSchema = z.object({
 
 interface Props {
   onOpenChange: () => void;
+  board?: BoardWithPartialTasks;
 }
 
-function NewBoardForm({ onOpenChange }: Props) {
+function BoardForm({ onOpenChange, board }: Props) {
   const router = useRouter();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
-      shortName: "",
+      title: `${board ? board.title : ""}`,
+      shortName: `${board ? board.shortName : ""}`,
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const data = await createBoard(values);
-      if (data?.boardId) {
-        onOpenChange();
+      const data: Board | null | undefined = board
+        ? await updateBoard(board.boardId, values.title)
+        : await createBoard(values);
+
+      if (!data) {
+        throw new Error("Operation failed: No data returned.");
+      }
+
+      onOpenChange();
+
+      if (!board) {
         router.push(`/dashboard/boards/${data.boardId}`);
       }
     } catch (error) {
-      console.log(error);
+      console.error("Failed to submit board:", error);
     }
   }
 
@@ -81,21 +92,22 @@ function NewBoardForm({ onOpenChange }: Props) {
             <FormItem>
               <FormLabel>Short name</FormLabel>
               <FormControl>
-                <Input placeholder="Short name" {...field} />
+                <Input placeholder="Short name" {...field} disabled={!!board} />
               </FormControl>
               <FormDescription>
-                This is a unique, short identifier for the board.
+                This is a unique, short identifier for the board, cannot be
+                changed.
               </FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button className="flex ml-auto" type="submit">
-          Create
+          {board ? "Update" : "Create"}
         </Button>
       </form>
     </Form>
   );
 }
 
-export { NewBoardForm };
+export { BoardForm };

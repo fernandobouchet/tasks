@@ -7,11 +7,12 @@ import {
   CardHeader,
   CardTitle,
 } from "../ui/card";
-import { Calendar, MoveUpRight } from "lucide-react";
+import { Calendar, MoreHorizontal, MoveUpRight } from "lucide-react";
 import { formatDate } from "@/lib/functions";
 import { BoardWithPartialTasks } from "@/types";
-import { BoardCardOptions } from "./boardCardOptions";
 import { Badge } from "../ui/badge";
+import { BoardOptions } from "./boardOptions";
+import { DropdownMenu, DropdownMenuTrigger } from "../ui/dropdown-menu";
 
 interface Props {
   board: BoardWithPartialTasks;
@@ -19,10 +20,16 @@ interface Props {
 
 const BoardCard = ({ board }: Props) => {
   return (
-    <Card className="flex flex-col lg:w-72 lg:h-80">
+    <Card className="flex flex-col lg:w-64 lg:h-80">
       <CardHeader>
         <div className="ml-auto">
-          <BoardCardOptions board={board} />
+          <DropdownMenu>
+            <DropdownMenuTrigger>
+              <MoreHorizontal />
+              <span className="sr-only">More</span>
+            </DropdownMenuTrigger>
+            <BoardOptions board={board} />
+          </DropdownMenu>
         </div>
         <CardTitle>{board.title}</CardTitle>
       </CardHeader>
