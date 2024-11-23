@@ -35,7 +35,7 @@ const createTask = async ({ task, boardId }: Props) => {
       data: { ...task, boardId },
     });
 
-    revalidatePath(`(pages)/dashboard/${boardId}`);
+    revalidatePath(`/(pages)/dashboard/boards/${boardId}`, "page");
 
     return newTask;
   } catch (error) {

@@ -25,7 +25,7 @@ const createBoard = async ({ title, shortName }: Props) => {
       },
     });
 
-    revalidatePath("(pages)/dashboard");
+    revalidatePath("/(pages)/dashboard");
 
     return board;
   } catch (error) {

@@ -3,21 +3,9 @@
 import { prisma } from "@/prisma/prisma";
 import { auth } from "@/lib/auth";
 import { revalidatePath } from "next/cache";
-import { TaskPriority, TaskStatus } from "@/types";
+import { Task } from "@/types";
 
-interface Props {
-  task: {
-    taskId: string;
-    title: string;
-    description: string;
-    status: keyof typeof TaskStatus;
-    priority: keyof typeof TaskPriority;
-    dueDate: Date;
-    boardId: string;
-  };
-}
-
-const updateTask = async ({ task }: Props) => {
+const deleteTask = async (task: Task) => {
   const session = await auth();
 
   if (!session?.user) return null;
@@ -32,18 +20,17 @@ const updateTask = async ({ task }: Props) => {
   if (!board) return null;
 
   try {
-    const newTask = await prisma.task.update({
+    const deletedTask = await prisma.task.delete({
       where: {
         taskId: task.taskId,
       },
-      data: { ...task },
     });
 
     revalidatePath(`/(pages)/dashboard/boards/${task.boardId}`, "page");
 
-    return newTask;
+    return deletedTask.taskId;
   } catch (error) {
     console.error("Error al crear el board:", error);
   }
 };
-export { updateTask };
+export { deleteTask };
