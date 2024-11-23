@@ -7,7 +7,6 @@ import { Button } from "@/components/ui/button";
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -19,6 +18,7 @@ import { FormStatusSelect } from "./formStatusSelect";
 import { FormPrioritySelect } from "./formPrioritySelect";
 import { TaskStatus, TaskPriority } from "@/types";
 import { FormDueDate } from "./formDueDate";
+import { add } from "date-fns";
 
 interface Props {
   boardId: string;
@@ -41,6 +41,8 @@ const formSchema = z.object({
 });
 
 function NewTaskForm({ boardId }: Props) {
+  const today = new Date();
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,7 +50,7 @@ function NewTaskForm({ boardId }: Props) {
       description: "",
       status: TaskStatus.TODO,
       priority: TaskPriority.LOW,
-      dueDate: new Date(),
+      dueDate: add(today, { weeks: 1 }),
     },
   });
 
@@ -67,9 +69,9 @@ function NewTaskForm({ boardId }: Props) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSubmit)}
-        className="flex flex-col w-full items-center space-y-2"
+        className="flex flex-col w-full items-center"
       >
-        <div className="flex flex-col w-full">
+        <div className="flex flex-col w-full gap-4">
           <FormField
             control={form.control}
             name="title"
@@ -79,7 +81,6 @@ function NewTaskForm({ boardId }: Props) {
                 <FormControl>
                   <Input placeholder="Title" {...field} />
                 </FormControl>
-                <FormDescription>This is your task title.</FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -93,19 +94,14 @@ function NewTaskForm({ boardId }: Props) {
                 <FormControl>
                   <Input placeholder="Description" {...field} />
                 </FormControl>
-                <FormDescription>
-                  This is your task description.
-                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
           />
         </div>
-        <div className="flex w-full justify-between">
+        <div className="flex w-full justify-between items-center py-4">
           <FormStatusSelect form={form} />
           <FormPrioritySelect form={form} />
-        </div>
-        <div className="flex mr-auto">
           <FormDueDate form={form} />
         </div>
         <Button className="flex ml-auto" type="submit">

@@ -2,7 +2,6 @@
 
 import {
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -58,7 +57,6 @@ const FormPrioritySelect = ({ form }: Props) => {
               ))}
             </SelectContent>
           </Select>
-          <FormDescription>This is the current task priority.</FormDescription>
           <FormMessage />
         </FormItem>
       )}

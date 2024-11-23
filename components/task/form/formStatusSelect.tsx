@@ -2,7 +2,6 @@
 
 import {
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -59,7 +58,6 @@ const FormStatusSelect = ({ form }: Props) => {
               ))}
             </SelectContent>
           </Select>
-          <FormDescription>This is the current task status.</FormDescription>
           <FormMessage />
         </FormItem>
       )}

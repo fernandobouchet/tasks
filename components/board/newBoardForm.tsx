@@ -60,7 +60,7 @@ function NewBoardForm({ onOpenChange }: Props) {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
         <FormField
           control={form.control}
           name="title"
@@ -70,7 +70,6 @@ function NewBoardForm({ onOpenChange }: Props) {
               <FormControl>
                 <Input placeholder="Title" {...field} />
               </FormControl>
-              <FormDescription>This is your board title.</FormDescription>
               <FormMessage />
             </FormItem>
           )}

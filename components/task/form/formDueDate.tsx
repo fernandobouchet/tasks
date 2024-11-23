@@ -7,7 +7,6 @@ import {
   FormItem,
   FormLabel,
   FormControl,
-  FormDescription,
   FormMessage,
 } from "@/components/ui/form";
 import {
@@ -41,15 +40,15 @@ const FormDueDate = ({ form }: Props) => {
       control={form.control}
       name="dueDate"
       render={({ field }) => (
-        <FormItem className="flex flex-col">
-          <FormLabel>Date of due</FormLabel>
+        <FormItem className="flex flex-col h-full justify-between">
+          <FormLabel className="pt-1">Due date</FormLabel>
           <Popover>
             <PopoverTrigger asChild>
-              <FormControl>
+              <FormControl className="mt-auto">
                 <Button
                   variant={"outline"}
                   className={cn(
-                    "w-[240px] pl-3 text-left font-normal",
+                    "w-fit pl-3 text-left font-normal",
                     !field.value && "text-muted-foreground"
                   )}
                 >
@@ -72,7 +71,6 @@ const FormDueDate = ({ form }: Props) => {
               />
             </PopoverContent>
           </Popover>
-          <FormDescription>Your task due date.</FormDescription>
           <FormMessage />
         </FormItem>
       )}
