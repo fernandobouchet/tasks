@@ -1,3 +1,4 @@
+"use client";
 import {
   Dialog,
   DialogContent,
@@ -6,16 +7,23 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { NewTaskForm } from "./newTaskForm";
+import { TaskForm } from "./taskForm";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 interface Props {
   boardId: string;
 }
 
 const TaskFormDialog = ({ boardId }: Props) => {
+  const [open, setIsOpen] = useState(false);
+
+  const handleSetIsOpen = () => {
+    setIsOpen(!open);
+  };
+
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={handleSetIsOpen}>
       <DialogTrigger asChild>
         <Button className="w-60">Create new task</Button>
       </DialogTrigger>
@@ -24,7 +32,7 @@ const TaskFormDialog = ({ boardId }: Props) => {
           <DialogTitle>Create new task</DialogTitle>
           <DialogDescription />
         </DialogHeader>
-        <NewTaskForm boardId={boardId} />
+        <TaskForm boardId={boardId} handleSetIsOpen={handleSetIsOpen} />
       </DialogContent>
     </Dialog>
   );

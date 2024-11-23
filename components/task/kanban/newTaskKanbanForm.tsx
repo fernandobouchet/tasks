@@ -15,8 +15,8 @@ import {
 import { Input } from "@/components/ui/input";
 import { createTask } from "@/lib/actions/task/createTask";
 import { TaskStatus, TaskPriority, Task } from "@/types";
-import { FormPrioritySelect } from "../task/form/formPrioritySelect";
-import { FormDueDate } from "../task/form/formDueDate";
+import { FormPrioritySelect } from "../form/formPrioritySelect";
+import { FormDueDate } from "../form/formDueDate";
 import { add } from "date-fns";
 import { Dispatch, SetStateAction } from "react";
 

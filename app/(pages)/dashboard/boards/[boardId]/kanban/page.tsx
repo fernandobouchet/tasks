@@ -1,4 +1,5 @@
-import { KanbanBoard } from "@/components/kanban/kanbanBoard";
+import { KanbanBoard } from "@/components/task/kanban/kanbanBoard";
+import { TaskFormDialog } from "@/components/task/form/taskFormDialog";
 import { getAllTaskFromBoardId } from "@/lib/actions/task/getAllTaskFromBoardId";
 import { Task } from "@/types";
 
@@ -13,5 +14,12 @@ export default async function Kanban({ params }: Props) {
 
   const data = (await getAllTaskFromBoardId(boardId)) as Task[];
 
-  return <KanbanBoard tasks={data} boardId={boardId} />;
+  return (
+    <section>
+      <TaskFormDialog boardId={boardId} />
+      <div className="py-4">
+        <KanbanBoard tasks={data} boardId={boardId} />
+      </div>
+    </section>
+  );
 }

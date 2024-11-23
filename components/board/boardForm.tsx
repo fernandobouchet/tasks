@@ -96,7 +96,7 @@ function BoardForm({ onOpenChange, board }: Props) {
               </FormControl>
               <FormDescription>
                 This is a unique, short identifier for the board, cannot be
-                changed.
+                changed once created.
               </FormDescription>
               <FormMessage />
             </FormItem>

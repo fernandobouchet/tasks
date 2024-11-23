@@ -16,12 +16,15 @@ import { Input } from "@/components/ui/input";
 import { createTask } from "@/lib/actions/task/createTask";
 import { FormStatusSelect } from "./formStatusSelect";
 import { FormPrioritySelect } from "./formPrioritySelect";
-import { TaskStatus, TaskPriority } from "@/types";
+import { TaskStatus, TaskPriority, Task } from "@/types";
 import { FormDueDate } from "./formDueDate";
 import { add } from "date-fns";
+import { updateTask } from "@/lib/actions/task/updateTask";
 
 interface Props {
   boardId: string;
+  handleSetIsOpen: () => void;
+  task?: Task;
 }
 
 const formSchema = z.object({
@@ -40,28 +43,42 @@ const formSchema = z.object({
   dueDate: z.date({ message: "Task due date is required." }),
 });
 
-function NewTaskForm({ boardId }: Props) {
+function TaskForm({ boardId, handleSetIsOpen, task }: Props) {
   const today = new Date();
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      title: "",
-      description: "",
-      status: TaskStatus.TODO,
-      priority: TaskPriority.LOW,
-      dueDate: add(today, { weeks: 1 }),
+      title: task?.title || "",
+      description: task?.description || "",
+      status: task?.status || TaskStatus.TODO,
+      priority: task?.priority || TaskPriority.LOW,
+      dueDate: task?.dueDate || add(today, { weeks: 1 }),
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
-    const data = await createTask({
-      task: { ...values },
-      boardId: boardId,
-    });
+    try {
+      const data = task
+        ? await updateTask({
+            task: {
+              taskId: task.taskId,
+              boardId: task.boardId,
+              ...values,
+            },
+          })
+        : await createTask({
+            task: { ...values },
+            boardId: boardId,
+          });
 
-    if (!data) {
-      return null;
+      if (!data) {
+        throw new Error("Operation failed: No data returned.");
+      }
+
+      handleSetIsOpen();
+    } catch (error) {
+      console.log(error);
     }
   }
 
@@ -105,11 +122,11 @@ function NewTaskForm({ boardId }: Props) {
           <FormDueDate form={form} />
         </div>
         <Button className="flex ml-auto" type="submit">
-          Create
+          {task ? "Update" : "Create"}
         </Button>
       </form>
     </Form>
   );
 }
 
-export { NewTaskForm };
+export { TaskForm };

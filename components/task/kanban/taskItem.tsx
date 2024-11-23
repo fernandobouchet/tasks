@@ -3,11 +3,10 @@ import { Draggable } from "@hello-pangea/dnd";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
-  DropdownMenuContent,
-  DropdownMenuItem,
 } from "@/components/ui/dropdown-menu";
 import { MoreHorizontal } from "lucide-react";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
+import { TaskOptions } from "../taskOptions";
 
 interface Props {
   task: Task;
@@ -38,13 +37,7 @@ const TaskItem = ({ task, index, column, deleteTask }: Props) => {
                   <span className="sr-only">Open menu</span>
                 </Button>
               </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem
-                  onClick={() => deleteTask(column.status, task.taskId)}
-                >
-                  Eliminar
-                </DropdownMenuItem>
-              </DropdownMenuContent>
+              <TaskOptions task={task} />
             </DropdownMenu>
           </div>
         </div>

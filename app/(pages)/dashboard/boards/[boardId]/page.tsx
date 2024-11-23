@@ -6,6 +6,7 @@ import { getAllTaskFromBoardId } from "@/lib/actions/task/getAllTaskFromBoardId"
 interface Props {
   params: {
     boardId: string;
+    shortName: string;
   };
 }
 

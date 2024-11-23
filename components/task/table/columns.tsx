@@ -6,14 +6,11 @@ import { MoreHorizontal } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { formatDate } from "@/lib/functions";
-import { TaskColumn } from "@/types";
+import { Task, TaskColumn } from "@/types";
+import { TaskOptions } from "../taskOptions";
 
 export const columns: ColumnDef<TaskColumn>[] = [
   {
@@ -62,7 +59,9 @@ export const columns: ColumnDef<TaskColumn>[] = [
   },
   {
     id: "actions",
-    cell: () => {
+    cell: ({ row }) => {
+      const task = row.original as Task;
+
       return (
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
@@ -71,12 +70,7 @@ export const columns: ColumnDef<TaskColumn>[] = [
               <MoreHorizontal className="h-4 w-4" />
             </Button>
           </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem>Edit task</DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>Delete task</DropdownMenuItem>
-          </DropdownMenuContent>
+          <TaskOptions task={task} />
         </DropdownMenu>
       );
     },

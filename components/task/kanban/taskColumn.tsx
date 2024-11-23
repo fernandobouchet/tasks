@@ -1,7 +1,7 @@
 import { Droppable } from "@hello-pangea/dnd";
 import { Plus } from "lucide-react";
-import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
-import { Button } from "../ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
+import { Button } from "../../ui/button";
 
 import { TaskItem } from "./taskItem";
 import { Dispatch, SetStateAction, useState } from "react";
@@ -49,8 +49,8 @@ const TaskColumn = ({ column, columns, setColumns, boardId }: Props) => {
   };
 
   return (
-    <Card className="w-full lg:w-1/4">
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
+    <Card className={`w-full lg:w-1/4 shadow`}>
+      <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
         <CardTitle className="text-sm font-medium">{column.status}</CardTitle>
         <Button
           variant="ghost"
@@ -62,7 +62,7 @@ const TaskColumn = ({ column, columns, setColumns, boardId }: Props) => {
           <span className="sr-only">Add task</span>
         </Button>
       </CardHeader>
-      <CardContent>
+      <CardContent className="p-2">
         <Droppable droppableId={column.status}>
           {(provided) => (
             <div
