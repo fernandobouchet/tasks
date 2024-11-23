@@ -11,10 +11,10 @@ import {
 import { useIsMobile } from "@/hooks/use-mobile";
 import { DeleteBoardAlert } from "./deleteBoardAlert";
 import { useState } from "react";
-import { Board } from "@/types";
+import { BoardWithPartialTasks } from "@/types";
 
 interface Props {
-  board: Board;
+  board: BoardWithPartialTasks;
 }
 
 const BoardCardOptions = ({ board }: Props) => {

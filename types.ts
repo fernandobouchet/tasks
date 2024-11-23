@@ -23,7 +23,6 @@ export type Task = {
   status: TaskStatus;
   priority: TaskPriority;
   dueDate: Date | null;
-  completedAt: Date | null;
   boardId: string;
 };
 
@@ -44,3 +43,12 @@ export enum TaskPriority {
   MEDIUM = "MEDIUM",
   HIGH = "HIGH",
 }
+
+type PartialTask = {
+  taskId: string;
+  status: keyof typeof TaskStatus;
+};
+
+export type BoardWithPartialTasks = Omit<Board, "tasks"> & {
+  tasks: PartialTask[];
+};
