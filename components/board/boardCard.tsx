@@ -39,7 +39,7 @@ const BoardCard = ({ board }: Props) => {
           <Calendar className="w-4" />
           {formatDate(board.createdAt)}
         </span>
-        <Badge variant="secondary" className="w-fit">
+        <Badge variant="outline" className="w-fit">
           {board.tasks.length} tasks
         </Badge>
       </CardContent>
