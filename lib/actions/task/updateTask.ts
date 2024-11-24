@@ -10,9 +10,9 @@ interface Props {
     taskId: string;
     title: string;
     description: string;
-    status: keyof typeof TaskStatus;
-    priority: keyof typeof TaskPriority;
-    dueDate: Date;
+    status: TaskStatus;
+    priority: TaskPriority;
+    dueDate: Date | null;
     boardId: string;
   };
 }
