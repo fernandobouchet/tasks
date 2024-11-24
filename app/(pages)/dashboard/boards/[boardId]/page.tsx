@@ -12,15 +12,14 @@ interface Props {
 
 export default async function Board({ params }: Props) {
   const boardId = params.boardId;
-
-  const data = await getAllTaskFromBoardId(boardId);
+  const tasks = await getAllTaskFromBoardId(boardId);
 
   return (
     <div>
       <section>
         <TaskFormDialog boardId={boardId} />
         <div>
-          <DataTable columns={columns} data={data} />
+          <DataTable columns={columns} data={tasks} />
         </div>
       </section>
     </div>

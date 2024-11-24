@@ -57,3 +57,16 @@ export type KanbanColumn = {
   tasks: Task[];
   status: string;
 };
+
+export type BoardsData = ({
+  tasks: {
+    status: keyof typeof TaskStatus;
+  }[];
+} & {
+  boardId: string;
+  title: string;
+  shortName: string;
+  createdAt: Date;
+  updatedAt: Date;
+  userId: string;
+})[];
