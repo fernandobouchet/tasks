@@ -1,5 +1,5 @@
 import { Dialog, DialogContent, DialogHeader } from "@/components/ui/dialog";
-import { Task, TaskPriority, TaskStatus } from "@/types";
+import { Task } from "@/types";
 import { TaskStatusBadge } from "./taskStatusBadge";
 import { TaskPriorityBadge } from "./taskPriorityBadge";
 import {

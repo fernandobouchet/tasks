@@ -2,7 +2,6 @@
 
 import { ColumnDef } from "@tanstack/react-table";
 import { MoreHorizontal } from "lucide-react";
-
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
@@ -17,12 +16,18 @@ export const columns: ColumnDef<TaskColumn>[] = [
     accessorFn: (row) => row.title,
     accessorKey: "title",
     header: "Title",
+    cell: ({ row }) => {
+      return <div className="line-clamp-1">{row.getValue("title")}</div>;
+    },
     meta: { hideOnMobile: false },
   },
   {
     accessorFn: (row) => row.description,
     accessorKey: "description",
     header: "Description",
+    cell: ({ row }) => {
+      return <div className="line-clamp-1">{row.getValue("description")}</div>;
+    },
     meta: { hideOnMobile: true },
   },
   {
@@ -43,7 +48,11 @@ export const columns: ColumnDef<TaskColumn>[] = [
     header: () => <div className="text-right">Created At</div>,
     cell: ({ row }) => {
       const formattedDueDate = formatDate(row.getValue("createdAt"));
-      return <div className="text-right font-medium">{formattedDueDate}</div>;
+      return (
+        <div className="text-right font-medium truncate">
+          {formattedDueDate}
+        </div>
+      );
     },
     meta: { hideOnMobile: true },
   },
@@ -53,7 +62,11 @@ export const columns: ColumnDef<TaskColumn>[] = [
     header: () => <div className="text-right">Due Date</div>,
     cell: ({ row }) => {
       const formattedDueDate = formatDate(row.getValue("dueDate"));
-      return <div className="text-right font-medium">{formattedDueDate}</div>;
+      return (
+        <div className="text-right font-medium truncate">
+          {formattedDueDate}
+        </div>
+      );
     },
     meta: { hideOnMobile: true },
   },
