@@ -15,9 +15,11 @@ import { UpdateTaskFormDialog } from "./form/updateTaskFormDialog";
 
 interface Props {
   task: Task;
+  kanbanDeleteTask?: (taskToDelete: Task) => void;
+  kanbanUpdateTask?: (updatedTask: Task) => void;
 }
 
-const TaskOptions = ({ task }: Props) => {
+const TaskOptions = ({ task, kanbanDeleteTask, kanbanUpdateTask }: Props) => {
   const isMobile = useIsMobile();
   const [openDelete, setOpenDelete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
@@ -60,11 +62,13 @@ const TaskOptions = ({ task }: Props) => {
         open={openDelete}
         handleOpen={handleOpenDelete}
         task={task}
+        kanbanDeleteTask={kanbanDeleteTask}
       />
       <UpdateTaskFormDialog
         open={openEdit}
         handleOpenChange={handleOpenEdit}
         task={task}
+        kanbanUpdateTask={kanbanUpdateTask}
       />
       <TaskViewCard
         open={openView}

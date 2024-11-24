@@ -18,13 +18,12 @@ import { TaskStatus, TaskPriority, Task } from "@/types";
 import { FormPrioritySelect } from "../form/formPrioritySelect";
 import { FormDueDate } from "../form/formDueDate";
 import { add } from "date-fns";
-import { Dispatch, SetStateAction } from "react";
+import { useKanbanContext } from "@/context/kanbanContext";
 
 interface Props {
   boardId: string;
-  setAddingToColumn: Dispatch<SetStateAction<string | null>>;
-  addNewTask: (newTask: Task, columnId: string) => void;
   columnId: string;
+  handleSetIsOpen: () => void;
 }
 
 const formSchema = z.object({
@@ -43,12 +42,9 @@ const formSchema = z.object({
   dueDate: z.date({ message: "Task due date is required." }),
 });
 
-function NewTaskKanbanForm({
-  boardId,
-  setAddingToColumn,
-  addNewTask,
-  columnId,
-}: Props) {
+function NewTaskKanbanForm({ boardId, columnId, handleSetIsOpen }: Props) {
+  const { addNewTask } = useKanbanContext();
+
   const today = new Date();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -56,7 +52,7 @@ function NewTaskKanbanForm({
     defaultValues: {
       title: "",
       description: "",
-      status: TaskStatus.TODO,
+      status: (columnId as TaskStatus) || TaskStatus.TODO,
       priority: TaskPriority.LOW,
       dueDate: add(today, { weeks: 1 }),
     },
@@ -65,13 +61,14 @@ function NewTaskKanbanForm({
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
       const data = await createTask({
-        task: { ...values, status: columnId as TaskStatus },
+        task: { ...values },
         boardId: boardId,
       });
+      handleSetIsOpen();
       if (!data) {
         return null;
       }
-      addNewTask(data as Task, columnId);
+      addNewTask(data as Task, columnId as TaskStatus);
     } catch (error) {
       console.log(error);
     }
@@ -118,7 +115,7 @@ function NewTaskKanbanForm({
             size="sm"
             variant="outline"
             className="w-full"
-            onClick={() => setAddingToColumn(null)}
+            onClick={handleSetIsOpen}
           >
             Cancel
           </Button>

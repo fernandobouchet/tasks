@@ -1,6 +1,7 @@
 import { KanbanBoard } from "@/components/task/kanban/kanbanBoard";
-import { TaskFormDialog } from "@/components/task/form/taskFormDialog";
+import { KanbanProvider } from "@/context/kanbanContext";
 import { getAllTaskFromBoardId } from "@/lib/actions/task/getAllTaskFromBoardId";
+import { getTasksByStatus } from "@/lib/functions";
 import { Task } from "@/types";
 
 interface Props {
@@ -14,12 +15,15 @@ export default async function Kanban({ params }: Props) {
 
   const data = (await getAllTaskFromBoardId(boardId)) as Task[];
 
+  const filteredColumns = getTasksByStatus(data);
+
   return (
-    <section>
-      <TaskFormDialog boardId={boardId} />
-      <div className="py-4">
-        <KanbanBoard tasks={data} boardId={boardId} />
-      </div>
-    </section>
+    <KanbanProvider filteredColumns={filteredColumns}>
+      <section>
+        <div className="py-4">
+          <KanbanBoard boardId={boardId} />
+        </div>
+      </section>
+    </KanbanProvider>
   );
 }

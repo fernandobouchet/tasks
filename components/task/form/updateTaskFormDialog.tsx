@@ -12,8 +12,14 @@ interface Props {
   open: boolean;
   handleOpenChange: () => void;
   task: Task;
+  kanbanUpdateTask?: (updatedTask: Task) => void;
 }
-const UpdateTaskFormDialog = ({ open, handleOpenChange, task }: Props) => {
+const UpdateTaskFormDialog = ({
+  open,
+  handleOpenChange,
+  task,
+  kanbanUpdateTask,
+}: Props) => {
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
@@ -25,6 +31,7 @@ const UpdateTaskFormDialog = ({ open, handleOpenChange, task }: Props) => {
           handleSetIsOpen={handleOpenChange}
           boardId={task.boardId}
           task={task}
+          kanbanUpdateTask={kanbanUpdateTask}
         />
       </DialogContent>
     </Dialog>

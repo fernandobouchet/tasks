@@ -18,13 +18,22 @@ interface Props {
   open: boolean;
   handleOpen: () => void;
   task: Task;
+  kanbanDeleteTask?: (taskToDelete: Task) => void;
 }
 
-const DeleteTaskAlert = ({ open, handleOpen, task }: Props) => {
+const DeleteTaskAlert = ({
+  open,
+  handleOpen,
+  task,
+  kanbanDeleteTask,
+}: Props) => {
   const handleDelete = async () => {
     try {
       handleOpen();
       await deleteTask(task);
+      if (kanbanDeleteTask) {
+        kanbanDeleteTask(task);
+      }
     } catch (error) {
       console.log(error);
       toast.error(

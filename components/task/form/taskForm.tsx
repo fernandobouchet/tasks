@@ -25,6 +25,7 @@ interface Props {
   boardId: string;
   handleSetIsOpen: () => void;
   task?: Task;
+  kanbanUpdateTask?: (updatedTask: Task) => void;
 }
 
 const formSchema = z.object({
@@ -43,7 +44,7 @@ const formSchema = z.object({
   dueDate: z.date({ message: "Task due date is required." }),
 });
 
-function TaskForm({ boardId, handleSetIsOpen, task }: Props) {
+function TaskForm({ boardId, handleSetIsOpen, task, kanbanUpdateTask }: Props) {
   const today = new Date();
 
   const form = useForm<z.infer<typeof formSchema>>({
@@ -59,24 +60,32 @@ function TaskForm({ boardId, handleSetIsOpen, task }: Props) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      const data = task
-        ? await updateTask({
-            task: {
-              taskId: task.taskId,
-              boardId: task.boardId,
-              ...values,
-            },
-          })
-        : await createTask({
-            task: { ...values },
-            boardId: boardId,
-          });
+      let data = null;
+
+      if (task) {
+        handleSetIsOpen();
+        const updatedTask = {
+          task: {
+            taskId: task.taskId,
+            boardId: task.boardId,
+            ...values,
+          },
+        };
+        data = await updateTask(updatedTask);
+        if (kanbanUpdateTask) {
+          kanbanUpdateTask(data as Task);
+        }
+      } else {
+        data = await createTask({
+          task: { ...values },
+          boardId: boardId,
+        });
+        handleSetIsOpen();
+      }
 
       if (!data) {
         throw new Error("Operation failed: No data returned.");
       }
-
-      handleSetIsOpen();
     } catch (error) {
       console.log(error);
     }
