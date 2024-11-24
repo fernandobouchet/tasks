@@ -52,3 +52,8 @@ type PartialTask = {
 export type BoardWithPartialTasks = Omit<Board, "tasks"> & {
   tasks: PartialTask[];
 };
+
+export type KanbanColumn = {
+  tasks: Task[];
+  status: string;
+};
