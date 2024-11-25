@@ -9,19 +9,23 @@ const getBoardsData = async () => {
 
   const userId = session.user.id!;
 
-  const data = await prisma.board.findMany({
-    where: {
-      userId: userId,
-    },
-    include: {
-      tasks: {
-        select: {
-          status: true,
+  try {
+    const data = await prisma.board.findMany({
+      where: {
+        userId: userId,
+      },
+      include: {
+        tasks: {
+          select: {
+            status: true,
+          },
         },
       },
-    },
-  });
-  return data;
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export { getBoardsData };
