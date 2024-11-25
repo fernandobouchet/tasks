@@ -13,6 +13,17 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   ],
   session: { strategy: "jwt" },
   callbacks: {
+    authorized: ({ auth, request: { nextUrl } }) => {
+      const isLoggedIn = !!auth?.user;
+      const isOnProtectRoute = nextUrl.pathname.includes("/dashboard"); // just a example
+      if (isOnProtectRoute) {
+        if (isLoggedIn) return true;
+        return Response.redirect(new URL("/login", nextUrl));
+      } else if (isLoggedIn) {
+        return Response.redirect(new URL("/protect", nextUrl));
+      }
+      return true;
+    },
     async jwt({ token, user }) {
       if (user) {
         token.id = user.id;
