@@ -10,7 +10,7 @@ import {
   BreadcrumbSeparator,
 } from "./ui/breadcrumb";
 import { Fragment, ReactElement } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 
 const Breadcrumbs = () => {
   const pathname = usePathname();

@@ -15,24 +15,26 @@ import {
 } from "@/components/ui/sidebar";
 import { useSession } from "next-auth/react";
 import { BoardMenu } from "./boardMenu";
-
-const data = {
-  navMain: [
-    {
-      title: "Home",
-      url: "/dashboard",
-      icon: Home,
-    },
-    {
-      title: "Boards",
-      url: "/dashboard/boards",
-      icon: LayoutDashboard,
-    },
-  ],
-};
+import { useTranslations } from "next-intl";
 
 export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
   const { data: session } = useSession();
+  const t = useTranslations("appSideBar");
+
+  const data = {
+    navMain: [
+      {
+        title: t("home"),
+        url: "/dashboard",
+        icon: Home,
+      },
+      {
+        title: t("boards"),
+        url: "/dashboard/boards",
+        icon: LayoutDashboard,
+      },
+    ],
+  };
 
   return (
     <Sidebar collapsible="icon" {...props}>

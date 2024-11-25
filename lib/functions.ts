@@ -8,7 +8,8 @@ const formatDate = (date: Date) => {
   return `${day}-${month}-${year}`;
 };
 
-const boardRouteRegex = /^(\/dashboard)?\/boards\/[a-z0-9]{25}(\/[\w-]+)?$/;
+const boardRouteRegex =
+  /^\/[\w-]+\/dashboard\/boards\/[a-z0-9]{25}(\/[\w-]+)?$/i;
 
 const isBoardRoute = (route: string) => boardRouteRegex.test(route);
 

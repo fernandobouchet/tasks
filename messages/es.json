@@ -29,5 +29,15 @@
     "footer": "Todos los derechos reservados.",
     "loginButton": "Iniciar sesión con Google",
     "logoutButton": "Cerrar sesión"
+  },
+  "themeToggle": {
+    "dark": "Tema oscuro",
+    "light": "Tema claro"
+  },
+  "boardMenu": { "board": "Tablero", "task": "Tareas" },
+  "appSideBar": { "home": "Inicio", "boards": "Tableros" },
+  "newBoardDialog": {
+    "button": "Crear tablero",
+    "title": "Crea un nuevo tablero"
   }
 }

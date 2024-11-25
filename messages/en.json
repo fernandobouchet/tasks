@@ -29,5 +29,15 @@
     "footer": "All rights reserved.",
     "loginButton": "Login with Google",
     "logoutButton": "Logout"
+  },
+  "themeToggle": {
+    "dark": "Dark theme",
+    "light": "Light theme"
+  },
+  "boardMenu": { "board": "Board", "task": "Tasks" },
+  "appSideBar": { "home": "Home", "boards": "Boards" },
+  "newBoardDialog": {
+    "button": "New board",
+    "title": "Create a new board"
   }
 }

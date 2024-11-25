@@ -9,11 +9,13 @@ import {
 } from "@/components/ui/sidebar";
 import { useParams, usePathname } from "next/navigation";
 import { isBoardRoute } from "@/lib/functions";
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
+import { useTranslations } from "next-intl";
 
 const BoardMenu = () => {
   const path = usePathname();
   const params = useParams();
+  const t = useTranslations("boardMenu");
 
   const { boardId } = params;
 
@@ -23,7 +25,7 @@ const BoardMenu = () => {
 
   const projects = [
     {
-      name: "Tasks",
+      name: t("task"),
       url: `/dashboard/boards/${boardId}`,
       icon: SquareCheckBig,
     },
@@ -36,7 +38,7 @@ const BoardMenu = () => {
 
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Board</SidebarGroupLabel>
+      <SidebarGroupLabel>{t("board")}</SidebarGroupLabel>
       <SidebarMenu>
         {projects.map((item) => (
           <SidebarMenuItem key={item.name}>

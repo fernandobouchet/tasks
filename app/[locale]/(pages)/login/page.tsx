@@ -57,7 +57,7 @@ export default function Login() {
       </section>
 
       <footer className="container mx-auto p-4 text-center text-gray-600">
-        <p>&copy; 2024 SimpleTaskBoard. {t("footer")}.</p>
+        <p>&copy; 2024 SimpleTaskBoard. {t("footer")}</p>
       </footer>
     </main>
   );
