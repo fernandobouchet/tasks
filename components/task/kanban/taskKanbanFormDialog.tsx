@@ -11,6 +11,7 @@ import { useState } from "react";
 import { NewTaskKanbanForm } from "./newTaskKanbanForm";
 import { Button } from "@/components/ui/button";
 import { Plus } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 interface Props {
   boardId: string;
@@ -18,6 +19,8 @@ interface Props {
 }
 
 const TaskKanbanFormDialog = ({ boardId, columnId }: Props) => {
+  const t = useTranslations("Kanban");
+
   const [open, setIsOpen] = useState(false);
 
   const handleSetIsOpen = () => {
@@ -34,7 +37,7 @@ const TaskKanbanFormDialog = ({ boardId, columnId }: Props) => {
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Create new task</DialogTitle>
+          <DialogTitle>{t("newTask")}</DialogTitle>
           <DialogDescription />
         </DialogHeader>
         <NewTaskKanbanForm

@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "../../ui/card";
 import { TaskItem } from "./taskItem";
 import { KanbanColumn } from "@/types";
 import { TaskKanbanFormDialog } from "./taskKanbanFormDialog";
+import { useTranslations } from "next-intl";
 
 interface Props {
   column: KanbanColumn;
@@ -12,10 +13,14 @@ interface Props {
 }
 
 const TaskColumn = ({ column, boardId }: Props) => {
+  const t = useTranslations("Kanban");
+
   return (
     <Card className={`w-full lg:w-1/4 shadow`}>
       <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
-        <CardTitle className="text-sm font-medium">{column.status}</CardTitle>
+        <CardTitle className="text-sm font-medium">
+          {t(column.status)}
+        </CardTitle>
         <TaskKanbanFormDialog boardId={boardId} columnId={column.status} />
       </CardHeader>
       <CardContent className="p-2">

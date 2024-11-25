@@ -108,7 +108,15 @@
       "priorityWarning": "La prioridad de la tarea es requerida.",
       "dueDateWarning": "La fecha de finalización de la tarea es requerida.",
       "create": "Crear",
-      "update": "Actualizar"
+      "update": "Actualizar",
+      "cancel": "Cancelar"
     }
+  },
+  "Kanban": {
+    "newTask": "Crear tarea nueva",
+    "TODO": "Por hacer",
+    "COMPLETED": "Completada",
+    "CANCELED": "Cancelada",
+    "IN_PROGRESS": "En progreso"
   }
 }

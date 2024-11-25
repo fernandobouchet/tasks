@@ -108,7 +108,15 @@
       "priorityWarning": "Priority is required.",
       "dueDateWarning": "Task due date is required.",
       "create": "Create",
-      "update": "Update"
+      "update": "Update",
+      "cancel": "Cancel"
     }
+  },
+  "Kanban": {
+    "newTask": "Create new task",
+    "TODO": "Todo",
+    "COMPLETED": "Completed",
+    "CANCELED": "Canceled",
+    "IN_PROGRESS": "In progress"
   }
 }

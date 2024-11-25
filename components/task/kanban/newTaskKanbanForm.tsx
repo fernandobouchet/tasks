@@ -19,6 +19,7 @@ import { FormPrioritySelect } from "../form/formPrioritySelect";
 import { FormDueDate } from "../form/formDueDate";
 import { add } from "date-fns";
 import { useKanbanContext } from "@/context/kanbanContext";
+import { useTranslations } from "next-intl";
 
 interface Props {
   boardId: string;
@@ -26,24 +27,26 @@ interface Props {
   handleSetIsOpen: () => void;
 }
 
-const formSchema = z.object({
-  title: z.string().min(2, {
-    message: "Task title must be at least 5 characters.",
-  }),
-  description: z.string().min(2, {
-    message: "Task description must be at least 10 characters.",
-  }),
-  status: z.nativeEnum(TaskStatus, {
-    message: "Status is required.",
-  }),
-  priority: z.nativeEnum(TaskPriority, {
-    message: "Priority is required.",
-  }),
-  dueDate: z.date({ message: "Task due date is required." }),
-});
-
 function NewTaskKanbanForm({ boardId, columnId, handleSetIsOpen }: Props) {
+  const t = useTranslations("task.form");
+
   const { addNewTask } = useKanbanContext();
+
+  const formSchema = z.object({
+    title: z.string().min(2, {
+      message: t("titleWarning"),
+    }),
+    description: z.string().min(2, {
+      message: t("descriptionWarning"),
+    }),
+    status: z.nativeEnum(TaskStatus, {
+      message: t("statusWarning"),
+    }),
+    priority: z.nativeEnum(TaskPriority, {
+      message: t("priorityWarning"),
+    }),
+    dueDate: z.date({ message: t("dueDateWarning") }),
+  });
 
   const today = new Date();
 
@@ -86,9 +89,9 @@ function NewTaskKanbanForm({ boardId, columnId, handleSetIsOpen }: Props) {
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Title</FormLabel>
+                <FormLabel>{t("title")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Title" {...field} />
+                  <Input placeholder={t("title")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -99,9 +102,9 @@ function NewTaskKanbanForm({ boardId, columnId, handleSetIsOpen }: Props) {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>{t("description")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Description" {...field} />
+                  <Input placeholder={t("description")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -112,15 +115,16 @@ function NewTaskKanbanForm({ boardId, columnId, handleSetIsOpen }: Props) {
         </div>
         <div className="flex w-full justify-around mt-6 gap-6">
           <Button
+            type="button"
             size="sm"
             variant="outline"
             className="w-full"
             onClick={handleSetIsOpen}
           >
-            Cancel
+            {t("cancel")}
           </Button>
           <Button size="sm" type="submit" className="w-full">
-            Add
+            {t("create")}
           </Button>
         </div>
       </form>
