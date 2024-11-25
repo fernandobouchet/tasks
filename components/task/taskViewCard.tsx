@@ -33,33 +33,37 @@ const TaskViewCard = ({ open, handleOpenChange, task }: Props) => {
         </DialogHeader>
         <Card className="w-full max-w-md border-none bg-inherit">
           <CardHeader>
+            <div className="ml-auto">
+              <TaskStatusBadge status={task.status} />
+            </div>
             <div className="flex justify-between items-start">
               <CardTitle className="text-xl font-bold">{task.title}</CardTitle>
-              <TaskStatusBadge status={task.status} />
             </div>
             <CardDescription className="mt-2">
               {task.description}
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="flex justify-between items-center mb-4">
+            <div className="flex flex-col gap-2 mb-4">
+              <div className="flex items-center text-sm">
+                <ClockIcon className="w-4 h-4 mr-2" />
+                <span>
+                  {t("createdAt")}: {formatDate(task.createdAt)}
+                </span>
+              </div>
               <div className="flex items-center">
                 <CalendarIcon className="w-4 h-4 mr-2 text-gray-500" />
                 <span className="text-sm text-gray-600">
                   {t("dueDate")}: {formatDate(task.dueDate!)}
                 </span>
               </div>
-              <TaskPriorityBadge priority={task.priority} />
             </div>
           </CardContent>
-          <CardFooter className="flex justify-between text-sm text-gray-500">
-            <div className="flex items-center">
-              <ClockIcon className="w-4 h-4 mr-2" />
-              <span>
-                {t("createdAt")}: {formatDate(task.createdAt)}
-              </span>
+          <CardFooter className="flex w-full justify-between text-sm">
+            <div>
+              <TaskPriorityBadge priority={task.priority} />
             </div>
-            <span>ID: {task.taskId.slice(0, 8)}</span>
+            <span className="text-gray-500">ID: {task.taskId.slice(0, 8)}</span>
           </CardFooter>
         </Card>
       </DialogContent>
