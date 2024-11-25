@@ -14,7 +14,13 @@ const TaskPriorityBadge = ({ priority }: Props) => {
 
   const { label, color } = priorityConfig[priority];
 
-  return <Badge className={`${color} font-semibold`}>{label}</Badge>;
+  return (
+    <Badge
+      className={`${color} font-semibold items-center justify-center text-nowrap`}
+    >
+      {label}
+    </Badge>
+  );
 };
 
 export { TaskPriorityBadge };

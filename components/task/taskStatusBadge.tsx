@@ -10,13 +10,15 @@ const TaskStatusBadge = ({ status }: Props) => {
     TODO: { label: "TODO", color: "bg-yellow-200 text-yellow-800" },
     IN_PROGRESS: { label: "IN PROGRESS", color: "bg-blue-200 text-blue-800" },
     COMPLETED: { label: "COMPLETED", color: "bg-green-200 text-green-800" },
-    CANCELED: { label: "CANCELED", color: "bg-green-200 text-green-800" },
+    CANCELED: { label: "CANCELED", color: "bg-red-200 text-red-800" },
   };
 
   const { label, color } = statusConfig[status];
 
   return (
-    <Badge className={`${color} font-semibold disabled:pointer-events-none`}>
+    <Badge
+      className={`${color} font-semibold items-center justify-center text-nowrap`}
+    >
       {label}
     </Badge>
   );

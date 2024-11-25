@@ -23,13 +23,13 @@ const TaskColumn = ({ column, boardId }: Props) => {
         </CardTitle>
         <TaskKanbanFormDialog boardId={boardId} columnId={column.status} />
       </CardHeader>
-      <CardContent className="p-2">
+      <CardContent className="p-2 h-full">
         <Droppable droppableId={column.status}>
           {(provided) => (
             <div
               {...provided.droppableProps}
               ref={provided.innerRef}
-              className="space-y-2"
+              className="space-y-2 h-full"
             >
               {column.tasks.map((task, index) => (
                 <TaskItem
