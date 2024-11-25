@@ -110,6 +110,21 @@
       "create": "Create",
       "update": "Update",
       "cancel": "Cancel"
+    },
+    "deleteAlert": {
+      "title": "Are you absolutely sure?",
+      "description": "This action cannot be undone. This will permanently delete the task from our database.",
+      "cancelButton": "Cancel",
+      "deleteButton": "Continue"
+    },
+    "options": {
+      "view": "View Task",
+      "edit": "Edit Task",
+      "delete": "Delete Task"
+    },
+    "card": {
+      "createdAt": "Created at",
+      "dueDate": "Due date"
     }
   },
   "Kanban": {
@@ -118,5 +133,26 @@
     "COMPLETED": "Completed",
     "CANCELED": "Canceled",
     "IN_PROGRESS": "In progress"
+  },
+  "Table": {
+    "columns": {
+      "title": "Title",
+      "description": "Description",
+      "priority": "Priority",
+      "status": "Status",
+      "createdAt": "Created at",
+      "DueDate": "Due date"
+    }
+  },
+  "statusBadge": {
+    "TODO": "Todo",
+    "COMPLETED": "Completed",
+    "CANCELED": "Canceled",
+    "IN_PROGRESS": "In progress"
+  },
+  "priorityBadge": {
+    "LOW": "Low",
+    "HIGH": "High",
+    "MEDIUM": "Medium"
   }
 }

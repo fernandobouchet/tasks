@@ -13,6 +13,7 @@ import {
 import { CalendarIcon, ClockIcon } from "lucide-react";
 import { formatDate } from "@/lib/functions";
 import { DialogDescription, DialogTitle } from "@radix-ui/react-dialog";
+import { useTranslations } from "next-intl";
 
 interface Props {
   open: boolean;
@@ -21,6 +22,8 @@ interface Props {
 }
 
 const TaskViewCard = ({ open, handleOpenChange, task }: Props) => {
+  const t = useTranslations("task.card");
+
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
@@ -43,7 +46,7 @@ const TaskViewCard = ({ open, handleOpenChange, task }: Props) => {
               <div className="flex items-center">
                 <CalendarIcon className="w-4 h-4 mr-2 text-gray-500" />
                 <span className="text-sm text-gray-600">
-                  Due date: {formatDate(task.dueDate!)}
+                  {t("dueDate")}: {formatDate(task.dueDate!)}
                 </span>
               </div>
               <TaskPriorityBadge priority={task.priority} />
@@ -52,7 +55,9 @@ const TaskViewCard = ({ open, handleOpenChange, task }: Props) => {
           <CardFooter className="flex justify-between text-sm text-gray-500">
             <div className="flex items-center">
               <ClockIcon className="w-4 h-4 mr-2" />
-              <span>Created: {formatDate(task.createdAt)}</span>
+              <span>
+                {t("createdAt")}: {formatDate(task.createdAt)}
+              </span>
             </div>
             <span>ID: {task.taskId.slice(0, 8)}</span>
           </CardFooter>

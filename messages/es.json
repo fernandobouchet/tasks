@@ -110,6 +110,21 @@
       "create": "Crear",
       "update": "Actualizar",
       "cancel": "Cancelar"
+    },
+    "deleteAlert": {
+      "title": "¿Estás absolutamente seguro?",
+      "description": "Esta acción no se puede deshacer. Esto eliminará permanentemente la tarea de nuestra base de datos.",
+      "cancelButton": "Cancelar",
+      "deleteButton": "Continuar"
+    },
+    "options": {
+      "view": "Ver tarea",
+      "edit": "Editar tarea",
+      "delete": "Borrar tarea"
+    },
+    "card": {
+      "createdAt": "Creado",
+      "dueDate": "Fecha de finalización"
     }
   },
   "Kanban": {
@@ -118,5 +133,26 @@
     "COMPLETED": "Completada",
     "CANCELED": "Cancelada",
     "IN_PROGRESS": "En progreso"
+  },
+  "Table": {
+    "columns": {
+      "title": "Título",
+      "description": "Descripción",
+      "priority": "Prioridad",
+      "status": "Estado",
+      "createdAt": "Creado",
+      "DueDate": "Fecha de finalización"
+    }
+  },
+  "statusBadge": {
+    "TODO": "Por hacer",
+    "COMPLETED": "Completada",
+    "CANCELED": "Cancelada",
+    "IN_PROGRESS": "En progreso"
+  },
+  "priorityBadge": {
+    "LOW": "Baja",
+    "HIGH": "Alta",
+    "MEDIUM": "Media"
   }
 }

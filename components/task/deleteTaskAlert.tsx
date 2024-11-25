@@ -13,6 +13,7 @@ import { Button } from "../ui/button";
 import { toast } from "sonner";
 import { deleteTask } from "@/lib/actions/task/deleteTask";
 import { Task } from "@/types";
+import { useTranslations } from "next-intl";
 
 interface Props {
   open: boolean;
@@ -27,6 +28,8 @@ const DeleteTaskAlert = ({
   task,
   kanbanDeleteTask,
 }: Props) => {
+  const t = useTranslations("task.deleteAlert");
+
   const handleDelete = async () => {
     try {
       handleOpen();
@@ -45,16 +48,15 @@ const DeleteTaskAlert = ({
     <AlertDialog open={open}>
       <AlertDialogContent>
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
-            This action cannot be undone. This will permanently delete the task
-            from our database.
-          </AlertDialogDescription>
+          <AlertDialogTitle>{t("title")}</AlertDialogTitle>
+          <AlertDialogDescription>{t("description")}</AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel onClick={handleOpen}>Cancel</AlertDialogCancel>
+          <AlertDialogCancel onClick={handleOpen}>
+            {t("cancelButton")}
+          </AlertDialogCancel>
           <Button variant={"destructive"} onClick={handleDelete}>
-            Continue
+            {t("deleteButton")}
           </Button>
         </AlertDialogFooter>
       </AlertDialogContent>

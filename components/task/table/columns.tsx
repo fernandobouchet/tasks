@@ -8,8 +8,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { formatDate } from "@/lib/functions";
-import { Task, TaskColumn } from "@/types";
+import { Task, TaskColumn, TaskPriority, TaskStatus } from "@/types";
 import { TaskOptions } from "../taskOptions";
+import { TaskStatusBadge } from "../taskStatusBadge";
+import { TaskPriorityBadge } from "../taskPriorityBadge";
 
 export const columns: ColumnDef<TaskColumn>[] = [
   {
@@ -34,12 +36,28 @@ export const columns: ColumnDef<TaskColumn>[] = [
     accessorFn: (row) => row.priority,
     accessorKey: "priority",
     header: "Priority",
+    cell: ({ row }) => {
+      const currentPriority = row.getValue("priority");
+      return (
+        <div className="[&>div]:w-full">
+          <TaskPriorityBadge priority={currentPriority as TaskPriority} />
+        </div>
+      );
+    },
     meta: { hideOnMobile: false },
   },
   {
     accessorFn: (row) => row.status,
     accessorKey: "status",
     header: "Status",
+    cell: ({ row }) => {
+      const currentStatus = row.getValue("status");
+      return (
+        <div className="[&>div]:w-full">
+          <TaskStatusBadge status={currentStatus as TaskStatus} />
+        </div>
+      );
+    },
     meta: { hideOnMobile: false },
   },
   {

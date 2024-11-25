@@ -12,6 +12,7 @@ import { Task } from "@/types";
 import { DeleteTaskAlert } from "./deleteTaskAlert";
 import { TaskViewCard } from "./taskViewCard";
 import { UpdateTaskFormDialog } from "./form/updateTaskFormDialog";
+import { useTranslations } from "next-intl";
 
 interface Props {
   task: Task;
@@ -20,6 +21,7 @@ interface Props {
 }
 
 const TaskOptions = ({ task, kanbanDeleteTask, kanbanUpdateTask }: Props) => {
+  const t = useTranslations("task.options");
   const isMobile = useIsMobile();
   const [openDelete, setOpenDelete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
@@ -46,16 +48,16 @@ const TaskOptions = ({ task, kanbanDeleteTask, kanbanUpdateTask }: Props) => {
       >
         <DropdownMenuItem className="cursor-pointer" onClick={handleOpenView}>
           <View className="text-muted-foreground" />
-          <span>View Task</span>
+          <span>{t("view")}</span>
         </DropdownMenuItem>
         <DropdownMenuItem className="cursor-pointer" onClick={handleOpenEdit}>
           <Edit className="text-muted-foreground" />
-          <span>Edit Task</span>
+          <span>{t("edit")}</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleOpenDelete} className="cursor-pointer">
           <Trash2 className="text-muted-foreground" />
-          <span>Delete Task</span>
+          <span>{t("delete")}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
       <DeleteTaskAlert
