@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { TaskStatus, TaskPriority } from "@/types";
+import { useTranslations } from "next-intl";
 import { UseFormReturn } from "react-hook-form";
 
 interface Props {
@@ -31,23 +32,25 @@ interface Props {
   >;
 }
 
-const availeableStatus = Object.entries(TaskStatus).map(([key]) => ({
-  value: key,
-  label: `${key}`,
-}));
-
 const FormStatusSelect = ({ form }: Props) => {
+  const t = useTranslations("task.form");
+
+  const availeableStatus = Object.entries(TaskStatus).map(([key]) => ({
+    value: key,
+    label: `${t(key)}`,
+  }));
+
   return (
     <FormField
       control={form.control}
       name="status"
       render={({ field }) => (
         <FormItem>
-          <FormLabel>Status</FormLabel>
+          <FormLabel>{t("status")}</FormLabel>
           <Select onValueChange={field.onChange} defaultValue={field.value}>
             <FormControl>
               <SelectTrigger>
-                <SelectValue placeholder="Select current task status" />
+                <SelectValue placeholder={t("statusPlaceholder")} />
               </SelectTrigger>
             </FormControl>
             <SelectContent>

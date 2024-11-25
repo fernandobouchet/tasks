@@ -19,6 +19,7 @@ import { format } from "date-fns";
 import { CalendarIcon } from "lucide-react";
 import { TaskStatus, TaskPriority } from "@/types";
 import { UseFormReturn } from "react-hook-form";
+import { useTranslations } from "next-intl";
 
 interface Props {
   form: UseFormReturn<
@@ -35,13 +36,15 @@ interface Props {
 }
 
 const FormDueDate = ({ form }: Props) => {
+  const t = useTranslations("task.form");
+
   return (
     <FormField
       control={form.control}
       name="dueDate"
       render={({ field }) => (
         <FormItem className="flex flex-col h-full justify-between">
-          <FormLabel className="pt-1">Due date</FormLabel>
+          <FormLabel className="pt-1">{t("dueDate")}</FormLabel>
           <Popover>
             <PopoverTrigger asChild>
               <FormControl className="mt-auto">
@@ -55,7 +58,7 @@ const FormDueDate = ({ form }: Props) => {
                   {field.value ? (
                     format(field.value, "PPP")
                   ) : (
-                    <span>Pick a date</span>
+                    <span>{t("pickDate")}</span>
                   )}
                   <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                 </Button>

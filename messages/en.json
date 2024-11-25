@@ -79,8 +79,36 @@
       "allTasksStatus": "All tasks status",
       "todo": "Todo",
       "completed": "Completed",
-      "cancelled": "Canceled",
+      "canceled": "Canceled",
       "inProgress": "In progress"
+    }
+  },
+  "task": {
+    "form": {
+      "dueDate": "Due date",
+      "pickDate": "Pick a date",
+      "priority": "Priority",
+      "priorityPlaceholder": "Select current task priority",
+      "LOW": "Low",
+      "HIGH": "High",
+      "MEDIUM": "Medium",
+      "status": "Status",
+      "statusPlaceholder": "Select current task status",
+      "TODO": "Todo",
+      "COMPLETED": "Completed",
+      "CANCELED": "Canceled",
+      "IN_PROGRESS": "In progress",
+      "updateTaskTitle": "Edit Task",
+      "newTaskDialog": "Create new task",
+      "title": "Title",
+      "description": "Description",
+      "titleWarning": "Task title must be at least 5 characters.",
+      "descriptionWarning": "Task description must be at least 10 characters.",
+      "statusWarning": "Status is required.",
+      "priorityWarning": "Priority is required.",
+      "dueDateWarning": "Task due date is required.",
+      "create": "Create",
+      "update": "Update"
     }
   }
 }

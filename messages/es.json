@@ -79,8 +79,36 @@
       "allTasksStatus": "Estado de todas las tareas",
       "todo": "Por hacer",
       "completed": "Completada",
-      "cancelled": "Cancelada",
+      "canceled": "Cancelada",
       "inProgress": "En progreso"
+    }
+  },
+  "task": {
+    "form": {
+      "dueDate": "Fecha de finalización",
+      "pickDate": "Selecciona una fecha",
+      "priority": "Prioridad",
+      "priorityPlaceholder": "Selecciona la prioridad de la tarea.",
+      "LOW": "Baja",
+      "HIGH": "Alta",
+      "MEDIUM": "Media",
+      "status": "Estado",
+      "statusPlaceholder": "Selecciona el estado de la tarea.",
+      "TODO": "Por hacer",
+      "COMPLETED": "Completada",
+      "CANCELED": "Cancelada",
+      "IN_PROGRESS": "En progreso",
+      "updateTaskTitle": "Editar tarea",
+      "newTaskDialog": "Crear nueva tarea",
+      "title": "Titulo",
+      "description": "Descripción",
+      "titleWarning": "El título de la tarea debe tener al menos 5 caracteres.",
+      "descriptionWarning": "La descripción de la tarea debe tener al menos 10 caracteres.",
+      "statusWarning": "El estado de la tarea es requerido.",
+      "priorityWarning": "La prioridad de la tarea es requerida.",
+      "dueDateWarning": "La fecha de finalización de la tarea es requerida.",
+      "create": "Crear",
+      "update": "Actualizar"
     }
   }
 }

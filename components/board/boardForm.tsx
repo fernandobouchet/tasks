@@ -15,7 +15,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { createBoard } from "@/lib/actions/board/createBoard";
-import { useRouter } from "next/navigation";
+import { useRouter } from "@/i18n/routing";
 import { Board, BoardWithPartialTasks } from "@/types";
 import { updateBoard } from "@/lib/actions/board/updateBoard";
 import { useTranslations } from "next-intl";

@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { Task } from "@/types";
 import { TaskForm } from "./taskForm";
+import { useTranslations } from "next-intl";
 
 interface Props {
   open: boolean;
@@ -20,11 +21,13 @@ const UpdateTaskFormDialog = ({
   task,
   kanbanUpdateTask,
 }: Props) => {
+  const t = useTranslations("task.form");
+
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit Task</DialogTitle>
+          <DialogTitle>{t("updateTaskTitle")}</DialogTitle>
           <DialogDescription />
         </DialogHeader>
         <TaskForm

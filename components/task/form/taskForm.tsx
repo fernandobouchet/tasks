@@ -20,6 +20,7 @@ import { TaskStatus, TaskPriority, Task } from "@/types";
 import { FormDueDate } from "./formDueDate";
 import { add } from "date-fns";
 import { updateTask } from "@/lib/actions/task/updateTask";
+import { useTranslations } from "next-intl";
 
 interface Props {
   boardId: string;
@@ -28,24 +29,26 @@ interface Props {
   kanbanUpdateTask?: (updatedTask: Task) => void;
 }
 
-const formSchema = z.object({
-  title: z.string().min(2, {
-    message: "Task title must be at least 5 characters.",
-  }),
-  description: z.string().min(2, {
-    message: "Task description must be at least 10 characters.",
-  }),
-  status: z.nativeEnum(TaskStatus, {
-    message: "Status is required.",
-  }),
-  priority: z.nativeEnum(TaskPriority, {
-    message: "Priority is required.",
-  }),
-  dueDate: z.date({ message: "Task due date is required." }),
-});
-
 function TaskForm({ boardId, handleSetIsOpen, task, kanbanUpdateTask }: Props) {
+  const t = useTranslations("task.form");
+
   const today = new Date();
+
+  const formSchema = z.object({
+    title: z.string().min(2, {
+      message: t("titleWarning"),
+    }),
+    description: z.string().min(2, {
+      message: t("descriptionWarning"),
+    }),
+    status: z.nativeEnum(TaskStatus, {
+      message: t("statusWarning"),
+    }),
+    priority: z.nativeEnum(TaskPriority, {
+      message: t("priorityWarning"),
+    }),
+    dueDate: z.date({ message: t("dueDateWarning") }),
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -103,9 +106,9 @@ function TaskForm({ boardId, handleSetIsOpen, task, kanbanUpdateTask }: Props) {
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Title</FormLabel>
+                <FormLabel>{t("title")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Title" {...field} />
+                  <Input placeholder={t("title")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -116,9 +119,9 @@ function TaskForm({ boardId, handleSetIsOpen, task, kanbanUpdateTask }: Props) {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Description</FormLabel>
+                <FormLabel>{t("description")}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Description" {...field} />
+                  <Input placeholder={t("description")} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -131,7 +134,7 @@ function TaskForm({ boardId, handleSetIsOpen, task, kanbanUpdateTask }: Props) {
           <FormDueDate form={form} />
         </div>
         <Button className="flex ml-auto" type="submit">
-          {task ? "Update" : "Create"}
+          {task ? t("update") : t("create")}
         </Button>
       </form>
     </Form>

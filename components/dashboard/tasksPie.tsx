@@ -29,7 +29,7 @@ const TasksPie = ({ boards }: Props) => {
     cant: { label: "Cant" },
     TODO: { label: t("todo"), color: "hsl(var(--chart-1))" },
     COMPLETED: { label: t("completed"), color: "hsl(var(--chart-2))" },
-    CANCELED: { label: t("cancelled"), color: "hsl(var(--chart-5))" },
+    CANCELED: { label: t("canceled"), color: "hsl(var(--chart-5))" },
     IN_PROGRESS: { label: t("inProgress"), color: "hsl(var(--chart-3))" },
   };
 

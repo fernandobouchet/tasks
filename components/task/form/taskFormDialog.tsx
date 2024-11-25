@@ -10,12 +10,15 @@ import {
 import { TaskForm } from "./taskForm";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface Props {
   boardId: string;
 }
 
 const TaskFormDialog = ({ boardId }: Props) => {
+  const t = useTranslations("task.form");
+
   const [open, setIsOpen] = useState(false);
 
   const handleSetIsOpen = () => {
@@ -25,11 +28,11 @@ const TaskFormDialog = ({ boardId }: Props) => {
   return (
     <Dialog open={open} onOpenChange={handleSetIsOpen}>
       <DialogTrigger asChild>
-        <Button className="w-60">Create new task</Button>
+        <Button className="w-60">{t("newTaskDialog")}</Button>
       </DialogTrigger>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Create new task</DialogTitle>
+          <DialogTitle>{t("newTaskDialog")}</DialogTitle>
           <DialogDescription />
         </DialogHeader>
         <TaskForm boardId={boardId} handleSetIsOpen={handleSetIsOpen} />
