@@ -1,6 +1,33 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+  "Loading": {
+    "title": "Cargando...",
+    "info": "Por favor aguarda mientras cargamos el contenido."
+  },
+  "NotFound": {
+    "title": "Página no encontrada",
+    "info": "Lo sentimos, la página que estás buscando no existe.",
+    "button": "Volver al Inicio"
+  },
+  "Login": {
+    "title": "Organiza tus tareas como nunca antes",
+    "info": "SimpleTaskBoard te ayuda a visualizar tu trabajo y maximizar la eficiencia de forma sencilla e intuitiva.",
+    "cardSectionTitle": "Características principales",
+    "card1": {
+      "title": "Tableros intuitivos",
+      "description": "Visualiza y gestiona tus tareas con tableros personalizables y fáciles de usar."
+    },
+    "card2": {
+      "title": "Gestión de listas",
+      "description": "Alterna fácilmente entre vistas de lista y tablero para controlar cada detalle de tus proyectos."
+    },
+    "card3": {
+      "title": "Agrega tareas facilmente",
+      "description": "Añade nuevas tareas a tus tableros, manteniendo todo organizado y en seguimiento"
+    },
+    "titleSection3": "¿Listo para mejorar tu productividad?",
+    "infoSection3": "Únete a miles de usuarios que ya están usando SimpleTaskBoard para alcanzar sus metas.",
+    "footer": "Todos los derechos reservados.",
+    "loginButton": "Iniciar sesión con Google",
+    "logoutButton": "Cerrar sesión"
   }
 }

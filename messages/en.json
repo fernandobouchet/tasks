@@ -1,6 +1,33 @@
 {
-  "HomePage": {
-    "title": "Hello world!",
-    "about": "Go to the about page"
+  "Loading": {
+    "title": "Loading...",
+    "info": "Please wait while we upload your content."
+  },
+  "NotFound": {
+    "title": "Page not found",
+    "info": "Sorry, the page you are looking for does not exist.",
+    "button": "Back to top"
+  },
+  "Login": {
+    "title": "Organize your tasks like never before",
+    "info": "SimpleTaskBoard helps you visualize your work and maximize efficiency in a simple and intuitive way.",
+    "cardSectionTitle": "Main features",
+    "card1": {
+      "title": "Intuitive dashboards",
+      "description": "View and manage your tasks with customizable, easy-to-use dashboards."
+    },
+    "card2": {
+      "title": "List Management",
+      "description": "Easily switch between list and board views to control every detail of your projects."
+    },
+    "card3": {
+      "title": "Easily add tasks",
+      "description": "Add new tasks to your boards, keeping everything organized and tracked."
+    },
+    "titleSection3": "Ready to improve your productivity?",
+    "infoSection3": "Join thousands of users who are already using SimpleTaskBoard to achieve their goals.",
+    "footer": "All rights reserved.",
+    "loginButton": "Login with Google",
+    "logoutButton": "Logout"
   }
 }

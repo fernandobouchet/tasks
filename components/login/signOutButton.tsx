@@ -3,8 +3,11 @@
 import { signOut } from "next-auth/react";
 import { LogOut } from "lucide-react";
 import { Button } from "../ui/button";
+import { useTranslations } from "next-intl";
 
 function SignOutButton() {
+  const t = useTranslations("Login");
+
   const handleOnClick = () => {
     signOut({ redirectTo: "/login" });
   };
@@ -16,7 +19,7 @@ function SignOutButton() {
       onClick={handleOnClick}
     >
       <LogOut />
-      Cerrar sesión
+      {t("logoutButton")}
     </Button>
   );
 }

@@ -1,29 +1,29 @@
 import { FeatureCard } from "@/components/featureCard";
 import { SignInButton } from "@/components/login/signInButton";
 import { ClipboardCheck, Layout, PlusCircle } from "lucide-react";
-
-const features = [
-  {
-    icon: Layout,
-    title: "Tableros intuitivos",
-    description:
-      "Visualiza y gestiona tus tareas con tableros personalizables y fáciles de usar.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Gestión de listas",
-    description:
-      "Alterna fácilmente entre vistas de lista y tablero para controlar cada detalle de tus proyectos.",
-  },
-  {
-    icon: PlusCircle,
-    title: "Agrega tareas facilmente",
-    description:
-      "Añade nuevas tareas a tus tableros, manteniendo todo organizado y en seguimiento",
-  },
-];
+import { useTranslations } from "next-intl";
 
 export default function Login() {
+  const t = useTranslations("Login");
+
+  const features = [
+    {
+      icon: Layout,
+      title: t("card1.title"),
+      description: t("card1.description"),
+    },
+    {
+      icon: ClipboardCheck,
+      title: t("card2.title"),
+      description: t("card2.description"),
+    },
+    {
+      icon: PlusCircle,
+      title: t("card3.title"),
+      description: t("card3.description"),
+    },
+  ];
+
   return (
     <main className="flex flex-col min-h-screen w-full items-center justify-center px-4">
       <nav className="container mx-auto p-4">
@@ -33,19 +33,14 @@ export default function Login() {
       </nav>
 
       <section className="container mx-auto px-4 py-20 text-center">
-        <h1 className="text-4xl md:text-6xl font-bold mb-6">
-          Organiza tus tareas como nunca antes
-        </h1>
-        <p className="text-xl mb-8 text-gray-600">
-          SimpleTaskBoard te ayuda a visualizar tu trabajo y maximizar la
-          eficiencia de forma sencilla e intuitiva.
-        </p>
+        <h1 className="text-4xl md:text-6xl font-bold mb-6">{t("title")}</h1>
+        <p className="text-xl mb-8 text-gray-600">{t("info")}</p>
         <SignInButton />
       </section>
 
       <section className="container mx-auto px-4 py-20">
         <h2 className="text-3xl font-bold text-center mb-12">
-          Características principales
+          {t("cardSectionTitle")}
         </h2>
         <div className="grid md:grid-cols-3 gap-8">
           {features.map((item, index) => (
@@ -54,20 +49,15 @@ export default function Login() {
         </div>
       </section>
 
-      <section className="bg-primary text-primary-foreground py-20">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold mb-4">
-            ¿Listo para mejorar tu productividad?
-          </h2>
-          <p className="text-xl mb-8">
-            Únete a miles de equipos que ya están usando SimpleTaskBoard para
-            alcanzar sus metas.
-          </p>
+      <section className="w-full bg-primary text-primary-foreground py-20">
+        <div className="mx-auto text-center">
+          <h2 className="text-3xl font-bold mb-4">{t("titleSection3")}</h2>
+          <p className="text-xl mb-8">{t("infoSection3")}</p>
         </div>
       </section>
 
       <footer className="container mx-auto p-4 text-center text-gray-600">
-        <p>&copy; 2024 SimpleTaskBoard. Todos los derechos reservados.</p>
+        <p>&copy; 2024 SimpleTaskBoard. {t("footer")}.</p>
       </footer>
     </main>
   );
