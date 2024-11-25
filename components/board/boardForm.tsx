@@ -18,20 +18,7 @@ import { createBoard } from "@/lib/actions/board/createBoard";
 import { useRouter } from "next/navigation";
 import { Board, BoardWithPartialTasks } from "@/types";
 import { updateBoard } from "@/lib/actions/board/updateBoard";
-
-const formSchema = z.object({
-  title: z.string().min(2, {
-    message: "Board title must be at least 2 characters.",
-  }),
-  shortName: z
-    .string()
-    .min(5, {
-      message: "Board short name must be at least 5 characters.",
-    })
-    .max(20, {
-      message: "Board short name must be 20 characters máx.",
-    }),
-});
+import { useTranslations } from "next-intl";
 
 interface Props {
   onOpenChange: () => void;
@@ -40,6 +27,21 @@ interface Props {
 
 function BoardForm({ onOpenChange, board }: Props) {
   const router = useRouter();
+  const t = useTranslations("board.form");
+
+  const formSchema = z.object({
+    title: z.string().min(2, {
+      message: t("titleWarning"),
+    }),
+    shortName: z
+      .string()
+      .min(5, {
+        message: t("shortNameWarning1"),
+      })
+      .max(20, {
+        message: t("shortNameWarning2"),
+      }),
+  });
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -77,9 +79,9 @@ function BoardForm({ onOpenChange, board }: Props) {
           name="title"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Title</FormLabel>
+              <FormLabel>{t("title")}</FormLabel>
               <FormControl>
-                <Input placeholder="Title" {...field} />
+                <Input placeholder={t("title")} {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -90,20 +92,21 @@ function BoardForm({ onOpenChange, board }: Props) {
           name="shortName"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Short name</FormLabel>
+              <FormLabel>{t("shortName")}</FormLabel>
               <FormControl>
-                <Input placeholder="Short name" {...field} disabled={!!board} />
+                <Input
+                  placeholder={t("shortName")}
+                  {...field}
+                  disabled={!!board}
+                />
               </FormControl>
-              <FormDescription>
-                This is a unique, short identifier for the board, cannot be
-                changed once created.
-              </FormDescription>
+              <FormDescription>{t("shortNameDescription")}</FormDescription>
               <FormMessage />
             </FormItem>
           )}
         />
         <Button className="flex ml-auto" type="submit">
-          {board ? "Update" : "Create"}
+          {board ? t("update") : t("create")}
         </Button>
       </form>
     </Form>

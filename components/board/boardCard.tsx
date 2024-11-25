@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { Link } from "@/i18n/routing";
 import { Button } from "../ui/button";
 import {
   Card,
@@ -13,12 +13,15 @@ import { BoardWithPartialTasks } from "@/types";
 import { Badge } from "../ui/badge";
 import { BoardOptions } from "./boardOptions";
 import { DropdownMenu, DropdownMenuTrigger } from "../ui/dropdown-menu";
+import { useTranslations } from "next-intl";
 
 interface Props {
   board: BoardWithPartialTasks;
 }
 
 const BoardCard = ({ board }: Props) => {
+  const t = useTranslations("board.card");
+
   return (
     <Card className="flex flex-col lg:w-64 lg:h-80">
       <CardHeader>
@@ -40,13 +43,13 @@ const BoardCard = ({ board }: Props) => {
           {formatDate(board.createdAt)}
         </span>
         <Badge variant="outline" className="w-fit">
-          {board.tasks.length} tasks
+          {board.tasks.length} {t("tasks")}
         </Badge>
       </CardContent>
       <CardFooter className="flex justify-center mt-auto w-full">
         <Button asChild className="flex items-center gap-2 w-full">
           <Link href={`/dashboard/boards/${board.boardId}`}>
-            Go to board
+            {t("button")}
             <MoveUpRight />
           </Link>
         </Button>

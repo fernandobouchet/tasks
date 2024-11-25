@@ -39,5 +39,32 @@
   "newBoardDialog": {
     "button": "Crear tablero",
     "title": "Crea un nuevo tablero"
+  },
+  "board": {
+    "form": {
+      "title": "Título",
+      "shortName": "Nombre clave",
+      "titleWarning": "El título del tablero debe tener al menos 2 caracteres.",
+      "shortNameDescription": "Este es un identificador único para el tablero, no se puede cambiar una vez creado.",
+      "shortNameWarning1": "El nombre clave del tablero debe tener al menos 5 caracteres.",
+      "shortNameWarning2": "El nombre clave del tablero debe tener 20 caracteres cómo máximo.",
+      "create": "Crear",
+      "update": "Actualizar"
+    },
+    "card": {
+      "tasks": "tareas",
+      "button": "Ir al tablero"
+    },
+    "options": {
+      "edit": "Editar tablero",
+      "delete": "Borrar tablero"
+    },
+    "deleteAlert": {
+      "title": "¿Estás absolutamente seguro?",
+      "description": "Esta acción no se puede deshacer. Esto eliminará permanentemente tu tablero y tus tareas de nuestra base de datos.",
+      "cancelButton": "Cancelar",
+      "deleteButton": "Continuar"
+    },
+    "updateDialog": "Editar tablero"
   }
 }

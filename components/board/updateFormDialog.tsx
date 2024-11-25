@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import { BoardForm } from "./boardForm";
 import { BoardWithPartialTasks } from "@/types";
+import { useTranslations } from "next-intl";
 
 interface Props {
   open: boolean;
@@ -14,11 +15,13 @@ interface Props {
   board: BoardWithPartialTasks;
 }
 const UpdateBoardFormDialog = ({ open, handleOpenChange, board }: Props) => {
+  const t = useTranslations("board");
+
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogContent>
         <DialogHeader>
-          <DialogTitle>Edit board</DialogTitle>
+          <DialogTitle>{t("updateDialog")}</DialogTitle>
           <DialogDescription />
         </DialogHeader>
         <BoardForm onOpenChange={handleOpenChange} board={board} />

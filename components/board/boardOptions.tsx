@@ -11,12 +11,14 @@ import { DeleteBoardAlert } from "./deleteBoardAlert";
 import { useState } from "react";
 import { UpdateBoardFormDialog } from "./updateFormDialog";
 import { BoardWithPartialTasks } from "@/types";
+import { useTranslations } from "next-intl";
 
 interface Props {
   board: BoardWithPartialTasks;
 }
 
 const BoardOptions = ({ board }: Props) => {
+  const t = useTranslations("board.options");
   const isMobile = useIsMobile();
   const [openDelete, setOpenDelete] = useState(false);
   const [openEdit, setOpenEdit] = useState(false);
@@ -38,12 +40,12 @@ const BoardOptions = ({ board }: Props) => {
       >
         <DropdownMenuItem className="cursor-pointer" onClick={handleOpenEdit}>
           <Edit className="text-muted-foreground" />
-          <span>Edit Board</span>
+          <span>{t("edit")}</span>
         </DropdownMenuItem>
         <DropdownMenuSeparator />
         <DropdownMenuItem onClick={handleOpenDelete} className="cursor-pointer">
           <Trash2 className="text-muted-foreground" />
-          <span>Delete Board</span>
+          <span>{t("delete")}</span>
         </DropdownMenuItem>
       </DropdownMenuContent>
       <DeleteBoardAlert

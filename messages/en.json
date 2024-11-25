@@ -39,5 +39,32 @@
   "newBoardDialog": {
     "button": "New board",
     "title": "Create a new board"
+  },
+  "board": {
+    "form": {
+      "title": "Title",
+      "titleWarning": "Board title must be at least 2 characters.",
+      "shortName": "Short name",
+      "shortNameDescription": "This is a unique, short identifier for the board, cannot be changed once created.",
+      "shortNameWarning1": "Board short name must be at least 5 characters.",
+      "shortNameWarning2": "Board short name must be 20 characters máx.",
+      "create": "Create",
+      "update": "Update"
+    },
+    "card": {
+      "tasks": "tasks",
+      "button": "Go to board"
+    },
+    "options": {
+      "edit": "Edit Board",
+      "delete": "Delete Board"
+    },
+    "deleteAlert": {
+      "title": "Are you absolutely sure?",
+      "description": "This action cannot be undone. This will permanently delete your board and tasks from our database.",
+      "cancelButton": "Cancel",
+      "deleteButton": "Continue"
+    },
+    "updateDialog": "Edit board"
   }
 }

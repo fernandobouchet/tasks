@@ -9,9 +9,9 @@ export default async function Boards() {
       <div className="pb-4">
         <h1>Boards</h1>
       </div>
-      {data.length !== 0 ? (
+      {data?.length !== 0 ? (
         <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-          {data.map((board) => (
+          {data?.map((board) => (
             <BoardCard key={board.boardId} board={board} />
           ))}
         </section>
