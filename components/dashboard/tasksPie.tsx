@@ -16,20 +16,23 @@ import {
   ChartLegendContent,
 } from "@/components/ui/chart";
 import { BoardsData } from "@/types";
-
-const chartConfig: ChartConfig = {
-  cant: { label: "Cant" },
-  TODO: { label: "Todo", color: "hsl(var(--chart-1))" },
-  COMPLETED: { label: "Completed", color: "hsl(var(--chart-2))" },
-  CANCELED: { label: "Canceled", color: "hsl(var(--chart-5))" },
-  IN_PROGRESS: { label: "In progress", color: "hsl(var(--chart-3))" },
-};
+import { useTranslations } from "next-intl";
 
 interface Props {
   boards: BoardsData;
 }
 
 const TasksPie = ({ boards }: Props) => {
+  const t = useTranslations("dashboard.pie");
+
+  const chartConfig: ChartConfig = {
+    cant: { label: "Cant" },
+    TODO: { label: t("todo"), color: "hsl(var(--chart-1))" },
+    COMPLETED: { label: t("completed"), color: "hsl(var(--chart-2))" },
+    CANCELED: { label: t("cancelled"), color: "hsl(var(--chart-5))" },
+    IN_PROGRESS: { label: t("inProgress"), color: "hsl(var(--chart-3))" },
+  };
+
   const totalTasksByStatus = boards.reduce((acc, board) => {
     board.tasks.forEach((task) => {
       const existing = acc.find((item) => item.status === task.status);
@@ -49,8 +52,8 @@ const TasksPie = ({ boards }: Props) => {
   return (
     <Card className="flex flex-col">
       <CardHeader className="items-center pb-0">
-        <CardTitle>Tasks</CardTitle>
-        <CardDescription>All tasks status</CardDescription>
+        <CardTitle>{t("tasks")}</CardTitle>
+        <CardDescription>{t("allTasksStatus")}</CardDescription>
       </CardHeader>
       <CardContent className="flex-1 pb-0">
         <ChartContainer

@@ -66,5 +66,21 @@
       "deleteButton": "Continuar"
     },
     "updateDialog": "Editar tablero"
+  },
+  "dashboard": {
+    "stats": {
+      "totalBoards": "Tableros totales",
+      "totalTasks": "Tareas totales",
+      "completedTasks": "Tareas completadas",
+      "completionRate": "Porcentaje de completadas"
+    },
+    "pie": {
+      "tasks": "Tareas",
+      "allTasksStatus": "Estado de todas las tareas",
+      "todo": "Por hacer",
+      "completed": "Completada",
+      "cancelled": "Cancelada",
+      "inProgress": "En progreso"
+    }
   }
 }

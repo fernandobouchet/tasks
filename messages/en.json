@@ -66,5 +66,21 @@
       "deleteButton": "Continue"
     },
     "updateDialog": "Edit board"
+  },
+  "dashboard": {
+    "stats": {
+      "totalBoards": "Total Boards",
+      "totalTasks": "Total Tasks",
+      "completedTasks": "Completed Tasks",
+      "completionRate": "Percentage of completed"
+    },
+    "pie": {
+      "tasks": "Tasks",
+      "allTasksStatus": "All tasks status",
+      "todo": "Todo",
+      "completed": "Completed",
+      "cancelled": "Canceled",
+      "inProgress": "In progress"
+    }
   }
 }
