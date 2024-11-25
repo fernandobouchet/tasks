@@ -3,8 +3,8 @@
 import * as React from "react";
 import { BookCheck, Home, LayoutDashboard } from "lucide-react";
 
-import { NavMain } from "@/components/nav-main";
-import { NavUser } from "@/components/nav-user";
+import { NavMain } from "@/components/sideBar/nav-main";
+import { NavUser } from "@/components/sideBar/nav-user";
 import {
   Sidebar,
   SidebarContent,

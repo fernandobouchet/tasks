@@ -18,8 +18,8 @@ import {
   SidebarMenuItem,
   useSidebar,
 } from "@/components/ui/sidebar";
-import { SignOutButton } from "./login/signOutButton";
-import { Skeleton } from "./ui/skeleton";
+import { SignOutButton } from "../login/signOutButton";
+import { Skeleton } from "../ui/skeleton";
 import { ThemeToggle } from "./themeToggle";
 import { User } from "@/types";
 

@@ -11,7 +11,7 @@ import {
 } from "@/components/ui/sidebar";
 import { Link } from "@/i18n/routing";
 import { usePathname } from "next/navigation";
-import { BoardFormDialog } from "./board/boardFormDialog";
+import { BoardFormDialog } from "../board/boardFormDialog";
 
 export function NavMain({
   items,

@@ -1,4 +1,4 @@
-import { FeatureCard } from "@/components/featureCard";
+import { FeatureCard } from "@/components/login/featureCard";
 import { SignInButton } from "@/components/login/signInButton";
 import { ClipboardCheck, Layout, PlusCircle } from "lucide-react";
 import { useTranslations } from "next-intl";
