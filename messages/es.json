@@ -140,8 +140,37 @@
       "description": "Descripción",
       "priority": "Prioridad",
       "status": "Estado",
-      "createdAt": "Creado",
+      "reatedAt": "Creado",
       "DueDate": "Fecha de finalización"
+    },
+    "dataTable": {
+      "Title": "Título",
+      "Description": "Descripción",
+      "Priority": "Prioridad",
+      "Status": "Estado",
+      "CreatedAt": "Creado",
+      "": "",
+      "DueDate": "Fecha de finalización",
+      "Actions": "Acciones",
+      "filter": "Filtrar tareas por título...",
+      "priority": "Prioridad",
+      "status": "Estado",
+      "reset": "Reset",
+      "noResults": "No hay resultados.",
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "dataTableFacete": {
+      "selected": "seleccionado",
+      "noResults": "No se encontraron resultados.",
+      "clear": "Limpiar filtros",
+      "TODO": "Por hacer",
+      "COMPLETED": "Completada",
+      "CANCELED": "Cancelada",
+      "IN_PROGRESS": "En progreso",
+      "LOW": "Baja",
+      "HIGH": "Alta",
+      "MEDIUM": "Media"
     }
   },
   "statusBadge": {

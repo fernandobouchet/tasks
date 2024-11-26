@@ -63,7 +63,7 @@ export const columns: ColumnDef<TaskColumn>[] = [
   {
     accessorFn: (row) => row.createdAt,
     accessorKey: "createdAt",
-    header: () => <div className="text-right">Created At</div>,
+    header: "CreatedAt",
     cell: ({ row }) => {
       const formattedDueDate = formatDate(row.getValue("createdAt"));
       return (
@@ -77,7 +77,7 @@ export const columns: ColumnDef<TaskColumn>[] = [
   {
     accessorFn: (row) => row.dueDate,
     accessorKey: "dueDate",
-    header: () => <div className="text-right">Due Date</div>,
+    header: "DueDate",
     cell: ({ row }) => {
       const formattedDueDate = formatDate(row.getValue("dueDate"));
       return (
@@ -90,6 +90,7 @@ export const columns: ColumnDef<TaskColumn>[] = [
   },
   {
     id: "actions",
+    header: "Actions",
     cell: ({ row }) => {
       const task = row.original as Task;
 

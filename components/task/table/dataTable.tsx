@@ -26,6 +26,7 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { X } from "lucide-react";
 import { DataTableFacetedFilter } from "./dataTableFacetedFilter";
 import { statuses, priorities } from "./constants";
+import { useTranslations } from "next-intl";
 
 interface DataTableProps<TData, TValue> {
   columns: (ColumnDef<TData, TValue> & {
@@ -40,6 +41,8 @@ export function DataTable<TData, TValue>({
   columns,
   data,
 }: DataTableProps<TData, TValue>) {
+  const t = useTranslations("Table.dataTable");
+
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
 
   const isMobile = useIsMobile();
@@ -69,7 +72,7 @@ export function DataTable<TData, TValue>({
     <div>
       <div className="flex flex-wrap items-center py-4 gap-2">
         <Input
-          placeholder="Filter tasks by title.."
+          placeholder={t("filter")}
           value={(table.getColumn("title")?.getFilterValue() as string) ?? ""}
           onChange={(event) =>
             table.getColumn("title")?.setFilterValue(event.target.value)
@@ -79,14 +82,14 @@ export function DataTable<TData, TValue>({
         {table.getColumn("status") && (
           <DataTableFacetedFilter
             column={table.getColumn("status")}
-            title="Status"
+            title={t("status")}
             options={statuses}
           />
         )}
         {table.getColumn("priority") && (
           <DataTableFacetedFilter
             column={table.getColumn("priority")}
-            title="Priority"
+            title={t("priority")}
             options={priorities}
           />
         )}
@@ -96,7 +99,7 @@ export function DataTable<TData, TValue>({
             onClick={() => table.resetColumnFilters()}
             className="h-8 px-2 lg:px-3"
           >
-            Reset
+            {t("reset")}
             <X />
           </Button>
         )}
@@ -112,7 +115,7 @@ export function DataTable<TData, TValue>({
                       {header.isPlaceholder
                         ? null
                         : flexRender(
-                            header.column.columnDef.header,
+                            t(header.column.columnDef.header),
                             header.getContext()
                           )}
                     </TableHead>
@@ -144,7 +147,7 @@ export function DataTable<TData, TValue>({
                   colSpan={columns.length}
                   className="h-24 text-center"
                 >
-                  No results.
+                  {t("noResults")}
                 </TableCell>
               </TableRow>
             )}
@@ -158,7 +161,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          Previous
+          {t("previous")}
         </Button>
         <Button
           variant="outline"
@@ -166,7 +169,7 @@ export function DataTable<TData, TValue>({
           onClick={() => table.nextPage()}
           disabled={!table.getCanNextPage()}
         >
-          Next
+          {t("next")}
         </Button>
       </div>
     </div>

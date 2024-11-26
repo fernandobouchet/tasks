@@ -140,8 +140,36 @@
       "description": "Description",
       "priority": "Priority",
       "status": "Status",
-      "createdAt": "Created at",
+      "CreatedAt": "Created at",
       "DueDate": "Due date"
+    },
+    "dataTable": {
+      "Title": "Title",
+      "Description": "Description",
+      "Priority": "Priority",
+      "Status": "Status",
+      "CreatedAt": "Created at",
+      "DueDate": "Due date",
+      "Actions": "Actions",
+      "filter": "Filter tasks by title...",
+      "priority": "Priority",
+      "status": "Status",
+      "reset": "Reset",
+      "noResults": "No results.",
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "dataTableFacete": {
+      "selected": "selected",
+      "noResults": "No results found.",
+      "clear": "Clear filters",
+      "TODO": "Todo",
+      "COMPLETED": "Completed",
+      "CANCELED": "Canceled",
+      "IN_PROGRESS": "In progress",
+      "LOW": "Low",
+      "HIGH": "High",
+      "MEDIUM": "Medium"
     }
   },
   "statusBadge": {
