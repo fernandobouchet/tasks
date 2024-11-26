@@ -182,5 +182,8 @@
     "LOW": "Low",
     "HIGH": "High",
     "MEDIUM": "Medium"
+  },
+  "LanguageSwitcher": {
+    "language": "Spanish"
   }
 }

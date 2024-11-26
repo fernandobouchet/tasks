@@ -183,5 +183,8 @@
     "LOW": "Baja",
     "HIGH": "Alta",
     "MEDIUM": "Media"
+  },
+  "LanguageSwitcher": {
+    "language": "Inglés"
   }
 }

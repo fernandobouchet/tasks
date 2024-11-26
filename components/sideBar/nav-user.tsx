@@ -22,6 +22,7 @@ import { SignOutButton } from "../login/signOutButton";
 import { Skeleton } from "../ui/skeleton";
 import { ThemeToggle } from "./themeToggle";
 import { User } from "@/types";
+import { LocaleToggle } from "./localeToggle";
 
 interface Props {
   user?: User;
@@ -80,6 +81,9 @@ export function NavUser({ user }: Props) {
             <DropdownMenuGroup>
               <DropdownMenuItem asChild>
                 <ThemeToggle />
+              </DropdownMenuItem>
+              <DropdownMenuItem asChild>
+                <LocaleToggle />
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
