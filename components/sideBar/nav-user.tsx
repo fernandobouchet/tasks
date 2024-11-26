@@ -79,15 +79,15 @@ export function NavUser({ user }: Props) {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem asChild>
+              <DropdownMenuItem className="p-0">
                 <ThemeToggle />
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
+              <DropdownMenuItem className="p-0">
                 <LocaleToggle />
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem className="p-0">
               <SignOutButton />
             </DropdownMenuItem>
           </DropdownMenuContent>
