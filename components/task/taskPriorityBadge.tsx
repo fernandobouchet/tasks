@@ -13,17 +13,17 @@ const TaskPriorityBadge = ({ priority }: Props) => {
   const priorityConfig = {
     LOW: {
       label: t("LOW"),
-      color: "bg-gray-200 text-gray-800",
+      color: "bg-gray-200 text-gray-800 border-gray-800",
       icon: <ArrowDown />,
     },
     MEDIUM: {
       label: t("MEDIUM"),
-      color: "bg-orange-200 text-orange-800",
+      color: "bg-orange-200 text-orange-800 border-orange-800",
       icon: <ArrowRight />,
     },
     HIGH: {
       label: t("HIGH"),
-      color: "bg-red-200 text-red-800",
+      color: "bg-red-200 text-red-800 border-red-800",
       icon: <ArrowUp />,
     },
   };
@@ -32,7 +32,7 @@ const TaskPriorityBadge = ({ priority }: Props) => {
 
   return (
     <Badge
-      className={`${color} font-semibold text-nowrap gap-2 mx-auto h-7 px-2`}
+      className={`${color} font-semibold text-nowrap gap-2 mx-auto h-7 px-2 pointer-events-none`}
     >
       <span className="[&>*]:w-4">{icon}</span> {label}
     </Badge>

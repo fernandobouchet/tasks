@@ -27,7 +27,7 @@ const TaskItem = ({ task, index }: Props) => {
           ref={provided.innerRef}
           {...provided.draggableProps}
           {...provided.dragHandleProps}
-          className="rounded-md border bg-card text-card-foreground shadow-sm"
+          className={`rounded-md border status-${task.status.toLowerCase()}`}
         >
           <div className="p-4 flex justify-between items-center gap-2">
             <span className="line-clamp-1">{task.title}</span>

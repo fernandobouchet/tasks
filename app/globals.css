@@ -53,11 +53,11 @@ body {
     --input: 240 10.144927536231888% 86.47058823529412%;
     --ring: 240 10.144927536231888% 86.47058823529412%;
     --radius: 0.5rem;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --chart-1: 54.92 96.72% 88.04%;
+    --chart-2: 140.62 84.21% 92.55%;
+    --chart-3: 214.29 94.59% 92.75%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 0 93.33% 94.12%;
     --radius: 1rem;
     --sidebar-background: 0 0% 98%;
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -113,12 +113,11 @@ body {
     --border: 213.33333333333334 7.692307692307694% 22.941176470588236%;
     --input: 213.33333333333334 7.692307692307694% 22.941176470588236%;
     --ring: 213.33333333333334 7.692307692307694% 22.941176470588236%;
-    --radius: 0.5rem;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --chart-1: 52.76 98.31% 76.86%;
+    --chart-2: 141 78.95% 85.1%;
+    --chart-3: 213.33 96.92% 87.25%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 0 96.3% 89.41%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -140,17 +139,17 @@ body {
 }
 
 .status-todo {
-  @apply bg-blue-100 dark:bg-blue-800 border-blue-200 dark:border-blue-700;
+  @apply bg-yellow-100 text-yellow-700 dark:bg-yellow-200 dark:text-yellow-800 border-yellow-700 dark:border-yellow-800;
 }
 
-.status-in-progress {
-  @apply bg-yellow-100 dark:bg-yellow-800 border-yellow-200 dark:border-yellow-700;
+.status-in_progress {
+  @apply bg-blue-100 text-blue-700 dark:bg-blue-200 dark:text-blue-800 border-blue-700 dark:border-blue-800;
 }
 
 .status-completed {
-  @apply bg-green-100 dark:bg-green-800 border-green-200 dark:border-green-700;
+  @apply bg-green-100 text-green-700 dark:bg-green-200 dark:text-green-800 border-green-700 dark:border-green-800;
 }
 
 .status-canceled {
-  @apply bg-red-100 dark:bg-red-800 border-red-200 dark:border-red-700;
+  @apply bg-red-100 text-red-700 dark:bg-red-200 dark:text-red-800 border-red-700 dark:border-red-800;
 }

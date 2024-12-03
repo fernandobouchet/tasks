@@ -27,10 +27,10 @@ const TasksPie = ({ boards }: Props) => {
 
   const chartConfig: ChartConfig = {
     cant: { label: "Cant" },
-    TODO: { label: t("todo"), color: "hsl(var(--chart-1))" },
-    COMPLETED: { label: t("completed"), color: "hsl(var(--chart-2))" },
-    CANCELED: { label: t("canceled"), color: "hsl(var(--chart-5))" },
-    IN_PROGRESS: { label: t("inProgress"), color: "hsl(var(--chart-3))" },
+    TODO: { label: t("todo"), color: "#fde047" },
+    COMPLETED: { label: t("completed"), color: "#86efac" },
+    CANCELED: { label: t("canceled"), color: "#fca5a5" },
+    IN_PROGRESS: { label: t("inProgress"), color: "#93c5fd" },
   };
 
   const totalTasksByStatus = boards.reduce((acc, board) => {
@@ -69,6 +69,7 @@ const TasksPie = ({ boards }: Props) => {
               cy="50%"
               outerRadius="80%"
               fill="#8884d8"
+              className="!stroke-card"
             />
             <ChartLegend
               content={<ChartLegendContent nameKey="status" />}

@@ -16,9 +16,11 @@ const TaskColumn = ({ column, boardId }: Props) => {
   const t = useTranslations("Kanban");
 
   return (
-    <Card className={`w-full lg:w-1/4 shadow`}>
+    <Card
+      className={`w-full lg:w-1/4 border status-${column.status.toLowerCase()}`}
+    >
       <CardHeader className="flex flex-row items-center justify-between space-y-0 py-2">
-        <CardTitle className="text-sm font-medium">
+        <CardTitle className="text-base font-semibold text-inherit">
           {t(column.status)}
         </CardTitle>
         <TaskKanbanFormDialog boardId={boardId} columnId={column.status} />

@@ -13,31 +13,27 @@ const TaskStatusBadge = ({ status }: Props) => {
   const statusConfig = {
     TODO: {
       label: t("TODO"),
-      color: "bg-yellow-200 text-yellow-800",
       icon: <HelpCircle />,
     },
     IN_PROGRESS: {
       label: t("IN_PROGRESS"),
-      color: "bg-blue-200 text-blue-800",
       icon: <Timer />,
     },
     COMPLETED: {
       label: t("COMPLETED"),
-      color: "bg-green-200 text-green-800",
       icon: <CheckCircle />,
     },
     CANCELED: {
       label: t("CANCELED"),
-      color: "bg-red-200 text-red-800",
       icon: <CircleOff />,
     },
   };
 
-  const { label, color, icon } = statusConfig[status];
+  const { label, icon } = statusConfig[status];
 
   return (
     <Badge
-      className={`${color} font-semibold text-nowrap gap-2 mx-auto h-7 px-2`}
+      className={`status-${status.toLowerCase()} font-semibold text-nowrap gap-2 mx-auto h-7 px-2 pointer-events-none`}
     >
       <span className="[&>*]:w-4">{icon}</span> {label}
     </Badge>
